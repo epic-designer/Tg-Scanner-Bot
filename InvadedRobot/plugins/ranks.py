@@ -67,6 +67,20 @@ InlineKeyboardButton("promote to Troops", callback_data=f"promote_to_troops:{use
        except Exception as e:
           await message.reply_photo(photo=media.ERROR_IMG,caption=e)
 
+@bot.on_callback_query(filters.regex("demote_to_civilian"))
+async def demote_to_civilian(_, query):
+   user_id = int(query.data.split(":")[1])
+   try:
+      if not query.from_user.id in DEVS:
+          return await query.answer("Only work dev users.", show_alert=True)
+      elif user_id in (await RANK_USERS()):
+           await remove_rank(user_id)
+           await query.message.edit("`Successfully Demoted to Civilian!`")
+      elif user_id in (await TROOPS_USERS()):
+           await remove_troop(user_id)
+           await query.message.edit("`Successfully Demoted to Civilian!`")
+   except Exception as e:
+       await message.reply_photo(media.ERROR_IMG, caption=e)
 
 
 
