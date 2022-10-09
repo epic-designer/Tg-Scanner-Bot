@@ -16,7 +16,7 @@ PM_START_TEXT = """
 **Invaded Analysis Report :-**
  ➛ **User:** {}
  ➛ **ID:** `{}`
- ➛ **Is Restricted:** `No`
+ ➛ **Is Restricted:** `{}`
  ➛ **Status:** `{}`
  ➛ **Crime Coefficient:** `Under - 100`
 """
