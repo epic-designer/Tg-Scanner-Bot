@@ -26,7 +26,7 @@ async def whois(_, message):
              else:
                   user_id = message.reply_to_message.from_user.id
              if (await is_scan_user(user_id)) == False:
-                  data = await pbot.get_chat(user_id) 
+                  data = await bot.get_chat(user_id) 
                   text = "**╒═══「 Invaded Results: 」**"
                   text += "**➛ First Name:** `{data.first_name}`"
                   text += "**➛ Last Name:** `{data.last_name}`"
@@ -36,7 +36,7 @@ async def whois(_, message):
                   text += "**➛ About:** `{data.bio}`"
                   return await msg.edit_text(text)
              else:
-                 data = await pbot.get_chat(user_id) 
+                 data = await bot.get_chat(user_id) 
                  details = await get_scan_user(user_id)
                  user_id = details["user_id"]
                  reason = details["reason"]
