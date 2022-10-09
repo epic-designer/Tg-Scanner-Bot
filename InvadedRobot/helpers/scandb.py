@@ -3,8 +3,6 @@ from telegraph import upload_file
 
 scansdb = pymongodb.SCANNER
 
-
-
 async def add_scan_user(user_id: int, reason: str, date: int):
                  scan_reason_list = {"_id": user_id, "user_id":user_id, "reason":reason, "date":date,"proof":"Anything inserted"}
                  scansdb.insert_one(scan_reason_list)
