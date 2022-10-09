@@ -15,7 +15,7 @@ from InvadedRobot.helpers.troopsdb import *
 async def rank(_, message):
     reply = message.reply_to_message
     user_id = message.from_user.id
-    if not user_id in DEVS:
+    if not user_id in config.DEVS:
         msg = await message.reply_text("`only devs can access this.`")
         asyncio.sleep(5)
         await msg.delete()
