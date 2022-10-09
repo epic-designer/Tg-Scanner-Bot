@@ -4,13 +4,13 @@ import config
 
 from pyrogram import filters
 from pyrogram.types import *
-from NandhaBot import bot
-from NandhaBot.helpers.scansdb import (
+from InvadedRobot import bot
+from InvadedRobot.helpers.scansdb import (
 get_scan_users, add_scan_user, get_scan_user,
  is_scan_user, remove_scan_user, update_scan_reason, update_scan_proof
 )
 
-from NandhaBot.rank import RANK_USERS
+from InvadedRobot.rank import RANK_USERS
 
 
 @bot.on_message(filters.command("addproof",config.COMMANDS))
