@@ -31,3 +31,32 @@ Invaded Analysis Report :-
  ➛ Members Count: `{}`
  ➛ Message Count: `{}`
 """
+
+FORMAT_TEXT = """
+
+note: you most need scan for rankuser rights.
+
+scan:
+scan for example:
+it you replying someone for scan.
+`/scan -r scammer`
+
+else I'd to scan someone.
+`/scan -u 123456789 -r scammer`
+
+revert:
+replying scan user for reverting.
+`/revert: reply to user`
+
+else I'd to reverting.
+`/revert -u 123456789`
+
+addproof:
+adding proof most you need to reply one media
+for adding proof
+for example:
+`/addproof -u 123456789 reply to media!
+"""
+
+
+"""
