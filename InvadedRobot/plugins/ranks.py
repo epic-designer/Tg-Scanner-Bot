@@ -29,7 +29,7 @@ async def rank(_, message):
 InlineKeyboardButton("demoet to troops", callback_data=f"demote_to_troops:{user_id}"),],[
 InlineKeyboardButton("demoet to Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
 
-           elif user_id in (await TROOPS_USERS()):
+           elif user_id in (await TROOP_USERS()):
               await message.reply_text("`the user is Troop you can promote to Invaded or demote to Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("promote to Invaded", callback_data=f"promote_to_invaded:{user_id}"),],[
@@ -54,7 +54,7 @@ InlineKeyboardButton("promote to Troops", callback_data=f"promote_to_troops:{use
 InlineKeyboardButton("demoet to Troops", callback_data=f"demote_to_troops:{user_id}"),],[
 InlineKeyboardButton("demoet to Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
 
-           elif user_id in (await TROOPS_USERS()):
+           elif user_id in (await TROOP_USERS()):
               await message.reply_text("`the user is Troop you can promote to Invaded or demote to Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("promote to Invaded", callback_data=f"promote_to_invaded:{user_id}"),],[
