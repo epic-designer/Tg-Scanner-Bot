@@ -28,11 +28,11 @@ async def scan(_, message):
             mention = f"[{user_id}](tg://user?id={user_id})"
             if (await is_scan_user(user_id)) == True:
                   await update_scan_reason(user_id,reason)
-                  await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(date,mention,reason))
+                  await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(mention,reason,date))
                   await msg.edit("`The Following User Was Already Scanned`\n`So I Have Just Updated The New Details!`")
             else:
                   await add_scan_user(user_id,reason,date)
-                  await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(date,mention,reason))
+                  await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(mention,reason,date))
                   await msg.edit("`The Following User Was Successfully Scanned!`")
          except Exception as e:
              await msg.delete()
@@ -44,11 +44,11 @@ async def scan(_, message):
                mention = f"[{user_id}](tg://user?id={user_id})"
                if (await is_scan_user(user_id)) == True:
                   await update_scan_reason(user_id,reason)
-                  await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(date,mention,reason))
+                  await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(mention,reason,date))
                   await msg.edit("`The Following User Was Already Scanned`\n`So I Have Just Updated The New Details!`")
                else:
                   await add_scan_user(user_id,reason,date)
-                  await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(date,mention,reason))  
+                  await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(mention,reason,date))  
                   await msg.edit("`The Following User Was Successfully Scanned!`")
             except Exception as e:
                   await msg.delete()
