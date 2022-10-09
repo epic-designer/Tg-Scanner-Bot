@@ -17,7 +17,7 @@ async def whois(_, message):
        msg = await message.reply_text("`Checking Database...`")
        if not message.from_user.id in (await RANK_USERS()):
             return await msg.edit_text("`Your Don't Have Enough Rights To Get Proof...`")
-       elif len(message.command) <2 and not message.repky_to_message:
+       elif len(message.command) <2 and not message.reply_to_message:
             return await msg.edit_text("`Use A Correct Format To Check...`")
        else:
          try:
