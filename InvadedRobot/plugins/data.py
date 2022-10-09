@@ -11,8 +11,8 @@ get_scan_users, add_scan_user, get_scan_user,
 
 from InvadedRobot.rank import RANK_USERS
 
-@bot.on_message(filters.command("data",config.COMMANDS))
-async def data(_, message):
+@bot.on_message(filters.command("check",config.COMMANDS))
+async def check(_, message):
        reply = message.reply_to_message
        msg = await message.reply_text("`Checking Database...`")
        if not message.from_user.id in (await RANK_USERS()):
