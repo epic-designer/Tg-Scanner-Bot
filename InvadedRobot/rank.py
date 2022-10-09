@@ -1,6 +1,6 @@
 "Rank Users for Special Access"
 
-from NandhaBot.helpers.ranksdb import get_rankusers
+from InvadedRobot.helpers.ranksdb import get_rankusers
 
 
 
