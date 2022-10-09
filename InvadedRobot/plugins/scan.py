@@ -11,23 +11,7 @@ get_scan_users, add_scan_user, get_scan_user,
 
 from InvadedRobot.rank import RANK_USERS
 
-SCAN_TEXT = """
-**Scan Processed Time And Date**: `{}`
 
-• **Scanned User**: `{}`
-• **Reason**: `{}`
-"""
-
-CHECK_TEXT = """
-**Details Of Following User:-**
-
-**User Id**: `{}`
-
-**Reason**: 
-`{}`
-
-**Scan Processed Time And Date**: `{}`
-"""
 @bot.on_message(filters.command("scan",config.COMMANDS))
 async def scan(_, message):
       reply = message.reply_to_message
