@@ -33,10 +33,9 @@ async def check(_, message):
                  await bot.send_message(message.chat.id, 
                  text=strings.CHECK_TEXT.format(user_id,reason,date),
                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
-                 await msg.delete()
          except Exception as e:
               await msg.delete()
-             await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+             await message.reply_photo(photo="https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
 
 @bot.on_callback_query(filters.regex("getproof"))
 async def getproof(_, query):
@@ -50,4 +49,4 @@ async def getproof(_, query):
            await query.message.reply_document(document=proof, caption=f"**Proof For***: `{user_id}`")
            await query.message.edit_reply_markup(reply_markup=None)
         except Exception as e:
-               await query.message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+               await query.message.reply_photo(photo="https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
