@@ -27,6 +27,7 @@ async def whois(_, message):
                   user_id = message.reply_to_message.from_user.id
              if (await is_scan_user(user_id)) == False:
                   data = await bot.get_chat(user_id) 
+                  is_scan = await is_scan_user(data.id)
                   mention = f"[Click Here](tg://user?id={data.id})"
                   text = "**╒═══「 Invaded Results: 」**\n"
                   text += f"**➛ First Name:** `{data.first_name}`\n"
@@ -34,6 +35,7 @@ async def whois(_, message):
                   text += f"**➛ User Id**: `{data.id}`\n"
                   text += f"**➛ Username: @{data.username}**\n"
                   text += f"**➛ Perm Link: {mention}**\n"
+                  text += f"**➛ is_Restricted**: `{is_scan}`"
                   text += f"**➛ About:** `{data.bio}`\n"
                   return await msg.edit_text(text)
              else:
