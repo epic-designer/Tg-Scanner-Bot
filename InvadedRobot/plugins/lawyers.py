@@ -1,6 +1,6 @@
 from InvadedRobot.rank import RANK_USERS
 
-from InvadedRobot.helpers.lawyersdb import (
+from InvadedRobot.helpers.lawyerdb import (
 get_lawyers as get_rankusers, add_lawyer as add_rank , remove_lawyer as remove_rank)
 
 RANK_ADDED_TEXT = """
