@@ -1,14 +1,14 @@
 from InvadedRobot.rank import RANK_USERS, LAWYERS
 
 from InvadedRobot.helpers.lawyerdb import (
-get_lawyers, add_lawyer , remove_lawyer)
+get_lawyers, add_troop, remove_lawyer)
 
 RANK_ADDED_TEXT = """
-new lawyer user arrived on bot
+new troopuser arrived on bot
 it's {}
 """
 RANK_REMOVED_TEXT = """
-the lawyer user remove on bot
+the troopuser remove on bot
 it's {}
 """
 
@@ -28,7 +28,7 @@ async def addlawyer(_, message):
            user_id_text = int(message.text.split(" ")[1])
            user = await bot.get_users(user_id_text)
            if user.id in (await LAWYERS()):
-               await msg.edit("`your trying add someone that person already a lawyer user`")
+               await msg.edit("`your trying add someone that person already a troopuser`")
            else:
               await add_lawyer(user.id)
               await msg.edit_text(RANK_ADDED_TEXT.format(user.mention))
@@ -40,7 +40,7 @@ async def addlawyer(_, message):
               user_id = reply.from_user.id
               user = await bot.get_users(user_id)
               if user.id in (await LAWYERS()):
-                   await msg.edit("`your trying add someone that person already a lawyer user`")
+                   await msg.edit("`your trying add someone that person already a troopuser`")
               else:
                  await add_lawyer(user.id)
                  await msg.edit_text(RANK_ADDED_TEXT.format(user.mention))
@@ -59,7 +59,7 @@ async def removelawyer(_, message):
            user_id_text = int(message.text.split(" ")[1])
            user = await bot.get_users(user_id_text)
            if not user.id in (await LAWYERS()):
-               await msg.edit("`your trying remove someone that person is not a lawyer user`")
+               await msg.edit("`your trying remove someone that person is not a troopuser`")
            else:
               await remove_lawyer(user.id)
               await msg.edit_text(RANK_REMOVED_TEXT.format(user.mention))
@@ -71,7 +71,7 @@ async def removelawyer(_, message):
               user_id = reply.from_user.id
               user = await bot.get_users(user_id)
               if not user.id in (await LAWYERS()):
-                   await msg.edit("`your trying remove someone that person is not a lawyer user`")
+                   await msg.edit("`your trying remove someone that person is not a troopuser`")
               else:
                  await remove_lawyer(user.id)
                  await msg.edit_text(RANK_REMOVED_TEXT.format(user.mention))
@@ -83,13 +83,13 @@ async def removelawyer(_, message):
 async def troopusers(_, message):
        chat_id = message.chat.id
        user_id = message.from_user.id
-       msg = await message.reply_text("`getting lawyer users list!`")
+       msg = await message.reply_text("`getting troopusers list!`")
        if not user_id in (await LAWYERS()) or not user_id in (await RANK_USERS()):
             await msg.edit_text("`sorry you can't collect lawyers users list.`")
        elif user_id in (await RANK_USERS()) or user_id in (await LAWYERS()):
            LAWYER_USER_TEXT = "𝗟𝗔𝗪𝗬𝗘𝗥𝗦 𝗟𝗜𝗦𝗧:\n\n"
            try:
-              for lawyer in (await LAWYERS()):
+              for troopin (await LAWYERS()):
                    mention = (await bot.get_users(lawyer)).mention
                    LAWYER_USER_TEXT += f"• {mention}\n"
                    await msg.edit(LAWYER_USER_TEXT)
