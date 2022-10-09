@@ -26,8 +26,8 @@ bot = Client(name=str(config.USERNAME),
 
 #pyrogram user Client start
 inv = Client(name="Invaded", 
-             api_id=config.API_ID, 
-             api_hash=config.API_HASH,
+             api_id=config.APP_ID, 
+             api_hash=config.APP_HASH,
              session_string=config.SESSION)
 
 
