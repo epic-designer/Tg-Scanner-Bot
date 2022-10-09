@@ -11,28 +11,47 @@ get_scan_users, add_scan_user, get_scan_user,
 
 from InvadedRobot.rank import RANK_USERS
 
-@bot.on_message(filters.command("check",config.COMMANDS))
-async def check(_, message):
+@bot.on_message(filters.command("whois",config.COMMANDS))
+async def whois(_, message):
        reply = message.reply_to_message
        msg = await message.reply_text("`Checking Database...`")
        if not message.from_user.id in (await RANK_USERS()):
             return await msg.edit_text("`Your Don't Have Enough Rights To Get Proof...`")
-       elif len(message.command) <2:
+       elif len(message.command) <2 and not message.repky_to_message:
             return await msg.edit_text("`Use A Correct Format To Check...`")
        else:
          try:
-             user_id = int(message.text.split("-u")[1])
-             if (await is_scan_user(user_id)) == False:
-                  return await msg.edit_text("`Look's Like This User Was Not Scanned...`")
+             if not message.reply_to_message:
+                  user_id = int(message.text.split("-u")[1])
              else:
+                  user_id = message.reply_to_message.from_user.id
+             if (await is_scan_user(user_id)) == False:
+                  data = await pbot.get_chat(user_id) 
+                  text = "**╒═══「 Invaded Results: 」**"
+                  text += "**➛ First Name:** `{data.first_name}`"
+                  text += "**➛ Last Name:** `{data.last_name}`"
+                  text += "**➛ User Id: @{data.id}**"
+                  text += "**➛ Username: @{data.username}**"
+                  text += "**➛ User Link: {data.mention}**""
+                  text += "**➛ About:** `{data.bio}`"
+                  return await msg.edit_text(text)
+             else:
+                 data = await pbot.get_chat(user_id) 
                  details = await get_scan_user(user_id)
                  user_id = details["user_id"]
                  reason = details["reason"]
                  date = details["date"]
                  proof = details["proof"]
-                 await bot.send_message(message.chat.id, 
-                 text=strings.CHECK_TEXT.format(user_id,reason,date),
-                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
+                 text = "**╒═══「 Invaded Results: 」**"
+                 text += "**➛ First Name:** `{data.first_name}`"
+                 text += "**➛ Last Name:** `{data.last_name}`"
+                 text += "**➛ User Id: @{data.id}**"
+                 text += "**➛ Username: @{data.username}**"
+                 text += "**➛ User Link: {data.mention}**""
+                 text += "**➛ About:** `{data.bio}`"
+                 text += "**➛ Reason:** `{reason}`"
+                 text += "**:: Scan Processed Time And Date:** `{date}`"
+                 await bot.send_message(message.chat.id, text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
                  await msg.delete()
          except Exception as e:
               await msg.delete()
@@ -47,7 +66,7 @@ async def getproof(_, query):
         try:
            details = await get_scan_user(user_id)
            proof = details["proof"]
-           await query.message.reply_document(document=proof, caption=f"**Proof For**: `{user_id}`")
+           await query.message.reply_document(document=proof, caption=f"**Proof Details For**: `{user_id}`")
            await query.message.edit_reply_markup(reply_markup=None)
         except Exception as e:
                await query.message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
