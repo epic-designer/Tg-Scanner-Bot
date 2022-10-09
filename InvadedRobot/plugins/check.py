@@ -9,7 +9,7 @@ get_scan_users, add_scan_user, get_scan_user,
  is_scan_user, remove_scan_user, update_scan_reason, update_scan_proof
 )
 
-from NandhaBot.rank import RANK_USERS
+from InvadedRobot.rank import RANK_USERS
 
 
 @bot.on_message(filters.command("check",config.COMMANDS))
