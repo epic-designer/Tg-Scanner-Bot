@@ -2,7 +2,6 @@ from InvadedRobot import pymongodb
 
 ranksdb = pymongodb.rankuserdb
 
-
 async def get_rankusers() -> list:
     rank_users = await ranksdb.find_one({"user_id": "user_id"})
     if not rank_users:
