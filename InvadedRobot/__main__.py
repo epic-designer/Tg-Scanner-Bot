@@ -51,7 +51,7 @@ async def start(_, message):
          msg_count = int(await inv.search_messages_count(message.chat.id))
          chat_title = message.chat.title
          chat_id = message.chat.id
-         await message.reply_photo(media.PM_PHOTO, caption=GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count))
+         await message.reply_photo(media.PM_PHOTO, caption=GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count),reply_markup=BUTTON)
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
 
