@@ -1,9 +1,11 @@
 import config
 import strings
 
+
 from pyrogram import filters
 from pyrogram.types import *
 from InvadedRobot import bot
+from InvadedRobot.helpers.status import status
 from InvadedRobot.helpers.scandb import (
 get_scan_users, add_scan_user, get_scan_user,
  is_scan_user, remove_scan_user, update_scan_reason, update_scan_proof
@@ -28,6 +30,7 @@ async def whois(_, message):
              if (await is_scan_user(user_id)) == False:
                   data = await bot.get_chat(user_id) 
                   is_scan = await is_scan_user(data.id)
+                  status = await status(data.id)
                   mention = f"[Click Here](tg://user?id={data.id})"
                   text = "**╒═══「 Invaded Results: 」**\n"
                   text += f"**➛ First Name:** `{data.first_name}`\n"
@@ -35,6 +38,7 @@ async def whois(_, message):
                   text += f"**➛ User Id**: `{data.id}`\n"
                   text += f"**➛ Username: @{data.username}**\n"
                   text += f"**➛ Perm Link: {mention}**\n"
+                  text += f"**➛ Status**: `{status}`\n"
                   text += f"**➛ is_Restricted**: `{is_scan}`"
                   text += f"**➛ About:** `{data.bio}`\n"
                   return await msg.edit_text(text)
@@ -46,6 +50,7 @@ async def whois(_, message):
                  reason = details["reason"]
                  date = details["date"]
                  proof = details["proof"]
+                 status = await status(data.id)
                  is_scan = await is_scan_user(data.id)
                  text = "**╒═══「 Invaded Results: 」**"
                  text += f"**➛ First Name:** `{data.first_name}`\n"
@@ -54,6 +59,7 @@ async def whois(_, message):
                  text += f"**➛ Username: @{data.username}**\n"
                  text += f"**➛ Perm Link: {mention}**\n"
                  text += f"**➛ About:** `{data.bio}`\n"
+                 text += f"**➛ Status**: `{Status}`\n"
                  text += f"**➛ is_Restricted**: `{is_scan}`\n\n"
                  text += f"**➛ Reason:** `{reason}`\n"
                  text += f"**: : Scan Processed Time And Date:** `{date}`\n"
