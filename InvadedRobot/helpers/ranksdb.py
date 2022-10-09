@@ -1,6 +1,6 @@
-from InvadedRobot import mongodb
+from InvadedRobot import pymongodb
 
-ranksdb = mongodb.rankuserdb
+ranksdb = pymongodb.rankuserdb
 
 
 async def get_rankusers() -> list:
