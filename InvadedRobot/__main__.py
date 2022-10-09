@@ -35,7 +35,7 @@ async def start(_, message):
          is_rank = await status(user_id)
          is_scan = await is_scan_user(user_id)
          mention = message.from_user.mention
-         await message.reply_photo(media.PM_PHOTO, caption=strings.PM_START_TEXT.format(mention, user_id,is_scan, is_rank))
+         await message.reply_photo(media.PM_PHOTO, caption=PM_START_TEXT.format(mention, user_id,is_scan, is_rank))
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
 
@@ -43,16 +43,9 @@ async def start(_, message):
      try:
          member_count = int(await bot.get_chat_members_count(message.chat.id))
          msg_count = int(await inv.search_messages_count(message.chat.id))
-         kk = await message.reply(text="`Analyzing The User`")
-         await asyncio.sleep(2)
-         mm = await kk.edit_text("`...`")
-         await asyncio.sleep(1)
-         ll = await mm.edit_text("`Processing...`")
-         await asyncio.sleep(1)
-         await ll.delete()
          chat_title = message.chat.title
          chat_id = message.chat.id
-         await message.reply_photo(media.PM_PHOTO, caption=strings.GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count))
+         await message.reply_photo(media.PM_PHOTO, caption=GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count))
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
 
