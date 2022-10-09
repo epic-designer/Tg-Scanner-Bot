@@ -1,4 +1,4 @@
-import config
+importimport config
 import strings
 
 from pyrogram import *
@@ -32,7 +32,7 @@ async def scan(_, message):
                   await msg.edit("`The Following User Was Successfully Scanned!`")
          except Exception as e:
              await msg.delete()
-             await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+             await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
       elif not reply:
             try:
                user_id = int(message.text.split("-u")[1].split("-r")[0])
@@ -48,7 +48,7 @@ async def scan(_, message):
                   await msg.edit("`The Following User Was Successfully Scanned!`")
             except Exception as e:
                   await msg.delete()
-                  await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+                  await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
 
 @bot.on_message(filters.command("revert",config.COMMANDS))
 async def revert(_, message):
@@ -70,7 +70,7 @@ async def revert(_, message):
                   #bot.send()
            except Exception as e:
                 await msg.delete()
-                await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+                await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
       elif not reply:
              try:
                  user_id = int(message.text.split("-u")[1])
@@ -82,4 +82,4 @@ async def revert(_, message):
                       #bot.send()
              except Exception as e:
                 await msg.delete()
-                await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+                await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")

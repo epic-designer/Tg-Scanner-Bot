@@ -31,4 +31,4 @@ async def proof(_, message):
              await msg.edit("`Successfully Added Proof!`")   
           except Exception as e:
               await msg.delete()
-              await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+              await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")

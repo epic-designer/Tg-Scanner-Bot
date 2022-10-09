@@ -27,7 +27,7 @@ async def start(_, message):
          mention = message.from_user.mention
          await message.reply_photo(media.PM_PHOTO, caption=strings.PM_START_TEXT.format(mention, user_id,is_scan, is_rank))
      except Exception as e:
-         await message.reply_photo(photo=(media.ERROR_IMG), caption=e)
+         await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
 
    else:
      try:
@@ -44,7 +44,7 @@ async def start(_, message):
          chat_id = message.chat.id
          await message.reply_photo(media.PM_PHOTO, caption=strings.GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count))
      except Exception as e:
-         await message.reply_photo(photo=(media.ERROR_IMG), caption=e)
+         await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
 
 if __name__ == "__main__":
      bot.run()
