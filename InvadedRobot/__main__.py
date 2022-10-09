@@ -50,8 +50,8 @@ async def start(_, message):
 
    else:
      try:
-         member_count = int(await bot.get_chat_members_count(m.chat.id))
-         msg_count = int(await inv.search_messages_count(m.chat.id))
+         member_count = int(await bot.get_chat_members_count(message.chat.id))
+         msg_count = int(await inv.search_messages_count(message.chat.id))
          kk = await message.reply(text="`Analyzing The User`")
          await asyncio.sleep(2)
          mm = await kk.edit_text("`...`")
