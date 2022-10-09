@@ -1,4 +1,4 @@
-from NandhaBot import pymongodb
+from InvadedRobot import pymongodb
 from telegraph import upload_file
 
 scansdb = pymongodb.SCANNER
