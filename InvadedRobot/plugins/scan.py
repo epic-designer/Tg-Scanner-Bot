@@ -4,12 +4,9 @@ import strings
 from pyrogram import filters
 from pyrogram.types import *
 from InvadedRobot import bot
-from InvadedRobot.helpers.scandb import (
-get_scan_users, add_scan_user, get_scan_user,
- is_scan_user, remove_scan_user, update_scan_reason, update_scan_proof
-)
+from InvadedRobot.helpers.scandb import*
 
-from InvadedRobot.rank import RANK_USERS
+from InvadedRobot.rank import *
 
 
 @bot.on_message(filters.command("scan",config.COMMANDS))
@@ -53,3 +50,37 @@ async def scan(_, message):
             except Exception as e:
                   await msg.delete()
                   await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+
+@bot.on_message(filters.command("revert",config.COMMANDS))
+async def revert(_, message):
+      reply = message.reply_to_message
+      user_id = message.from_user.id
+      msg = await message.reply_text("`Reverting Scan...`")
+      if not user_id in (await RANK_USERS()):
+          return await msg.edit("`You Don't Have Enough Rights To Scan...`")
+      elif len(message.command) <2:
+          return await msg.edit("`Get Format For Scan By Sending` `/formatting`")
+      elif reply:
+           try:
+              user_id = int(reply.from_user.id)
+              if (await is_scan_user(user_id)) == False:
+                  return await msg.edit("`The Following User Is Not A Scanned User How Can I Revert A User's Scan Who Wasn't Scanned ?`")
+              else:
+                  await remove_scan_user(user_id)
+                  await msg.edit("`Successfully Reverted A Scan Of The User...`") 
+                  #bot.send()
+           except Exception as e:
+                await msg.delete()
+                await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+      elif not reply:
+             try:
+                 user_id = int(message.text.split("-u")[1])
+                 if (await is_scan_user(user_id)) == False:
+                    return await msg.edit("`The Following User Is Not A Scanned User How Can I Revert A User's Scan Who Wasn't Scanned ?`")
+                 else:
+                      await remove_scan_user(user_id)
+                      await msg.edit("`Successfully Reverted A Scan Of The User...`") 
+                      #bot.send()
+             except Exception as e:
+                await msg.delete()
+                await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
