@@ -10,8 +10,8 @@ get_scan_users, add_scan_user, get_scan_user,
 
 from InvadedRobot.rank import RANK_USERS
 
-@bot.on_message(filters.command("proof", config.COMMANDS))
-async def proof(_, message):
+@bot.on_message(filters.command("addproof", config.COMMANDS))
+async def addproof(_, message):
       reply = message.reply_to_message
       date = message.date
       msg = await message.reply_text("`Adding Proof...`")
