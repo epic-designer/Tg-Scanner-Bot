@@ -28,12 +28,12 @@ async def whois(_, message):
              if (await is_scan_user(user_id)) == False:
                   data = await bot.get_chat(user_id) 
                   text = "**╒═══「 Invaded Results: 」**"
-                  text += "**➛ First Name:** `{data.first_name}`"
-                  text += "**➛ Last Name:** `{data.last_name}`"
-                  text += "**➛ User Id: @{data.id}**"
-                  text += "**➛ Username: @{data.username}**"
-                  text += "**➛ User Link: {data.mention}**"
-                  text += "**➛ About:** `{data.bio}`"
+                  text += f"**➛ First Name:** `{data.first_name}`"
+                  text += f"**➛ Last Name:** `{data.last_name}`"
+                  text += f"**➛ User Id: @{data.id}**"
+                  text += f"**➛ Username: @{data.username}**"
+                  text += f"**➛ User Link: {data.mention}**"
+                  text += f"**➛ About:** `{data.bio}`"
                   return await msg.edit_text(text)
              else:
                  data = await bot.get_chat(user_id) 
@@ -43,14 +43,14 @@ async def whois(_, message):
                  date = details["date"]
                  proof = details["proof"]
                  text = "**╒═══「 Invaded Results: 」**"
-                 text += "**➛ First Name:** `{data.first_name}`"
-                 text += "**➛ Last Name:** `{data.last_name}`"
-                 text += "**➛ User Id: @{data.id}**"
-                 text += "**➛ Username: @{data.username}**"
-                 text += "**➛ User Link: {data.mention}**"
-                 text += "**➛ About:** `{data.bio}`"
-                 text += "**➛ Reason:** `{reason}`"
-                 text += "**:: Scan Processed Time And Date:** `{date}`"
+                 text += f"**➛ First Name:** `{data.first_name}`"
+                 text += f"**➛ Last Name:** `{data.last_name}`"
+                 text += f"**➛ User Id: @{data.id}**"
+                 text += f"**➛ Username: @{data.username}**"
+                 text += f"**➛ User Link: {data.mention}**"
+                 text += f"**➛ About:** `{data.bio}`"
+                 text += f"**➛ Reason:** `{reason}`"
+                 text += f"**:: Scan Processed Time And Date:** `{date}`"
                  await bot.send_message(message.chat.id, text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
                  await msg.delete()
          except Exception as e:
