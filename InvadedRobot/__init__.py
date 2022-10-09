@@ -2,7 +2,7 @@ import os
 import config
 import logging
 
-from motor import AsyncIOMotorClient
+from motor.motor_asyncio import AsyncIOMotorClient
 from pyrogram import Client
 from pymongo import MongoClient
 
