@@ -28,7 +28,7 @@ bot = Client(name=str(config.USERNAME),
 Invaded = Client(name="Invaded", 
              api_id=config.API_ID, 
              api_hash=config.API_HASH,
-             string_session=config.SESSION)
+             session_string=config.SESSION)
 
 Invaded.start()
 
