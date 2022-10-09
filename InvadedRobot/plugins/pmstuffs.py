@@ -94,5 +94,5 @@ async def start(_, m: Message):
                 reply_markup=InlineKeyboardMarkup(buttons)
         )
      except Exception as e:
-         await m.reply_photo("https://c4.wallpaperflare.com/wallpaper/976/117/318/anime-girls-404-not-found-glowing-eyes-girls-frontline-wallpaper-preview.jpg", caption=f"`404 Error Occurred Failed To Start The Invaded`\n\n `{e}`")
+         await m.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
          return
