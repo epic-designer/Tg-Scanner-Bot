@@ -36,7 +36,7 @@ async def check(_, message):
                  await msg.delete()
          except Exception as e:
               await msg.delete()
-             await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
+              await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
 
 @bot.on_callback_query(filters.regex("getproof"))
 async def getproof(_, query):
