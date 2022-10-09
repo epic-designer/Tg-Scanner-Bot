@@ -11,9 +11,6 @@ from InvadedRobot.helpers.ranksdb import *
 from InvadedRobot.helpers.troopsdb import *
 
 
-InlineKeyboardMarkup([[
-InlineKeyboardButton("promote to Invaded", callback_data=]])
-
 @bot.on_message(filters.command("setrank"))
 async def rank(_, message):
     reply = message.reply_to_message
