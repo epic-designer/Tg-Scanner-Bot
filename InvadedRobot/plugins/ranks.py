@@ -38,12 +38,11 @@ InlineKeyboardButton("demoet to Civilian", callback_data=f"demote_to_civilian:{u
               await message.reply_text("`the user is Civilian you can promote to Invaded or promote to troops`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("promote to Invaded", callback_data=f"promote_to_invaded:{user_id}"),],[
-InlineKeyboardButton("promote to Troops", callback_data=f"promote_to_troops:{user_id}")]]))
-           
-       except Exception as e;
+InlineKeyboardButton("promote to Troops", callback_data=f"promote_to_troops:{user_id}")]]))          
+       except Exception as e:
           await message.reply_photo(photo=media.ERROR_IMG,caption=e)
-
     elif not reply:
+       try:
            if len(message.command) <2:
                  msg = await message.reply_text("`you need to use correct formatting.`")
                  await asyncio.sleep(10)
@@ -64,8 +63,9 @@ InlineKeyboardButton("demoet to Civilian", callback_data=f"demote_to_civilian:{u
               await message.reply_text("`the user is Civilian you can promote to Invaded or promote to troops`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("promote to Invaded", callback_data=f"promote_to_invaded:{user_id}"),],[
-InlineKeyboardButton("promote to Troops", callback_data=f"promote_to_troops:{user_id}")]]))
-           
+InlineKeyboardButton("promote to Troops", callback_data=f"promote_to_troops:{user_id}")]]))           
+       except Exception as e:
+          await message.reply_photo(photo=media.ERROR_IMG,caption=e)
 
 
 
