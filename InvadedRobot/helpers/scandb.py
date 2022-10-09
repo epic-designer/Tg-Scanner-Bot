@@ -18,8 +18,8 @@ async def update_scan_proof(user_id: int, message):
            url = "https://telegra.ph" + file_id
         scansdb.update_one({"user_id": user_id}, {"$set":{"proof":url}})
 
-async def update_scan_reason(user_id: int, reason: str, date: str):
-       scansdb.update_one({"user_id": user_id}, {"$set":{"reason": reason,"date": date}})
+async def update_scan_reason(user_id: int, reason: str):
+       scansdb.update_one({"user_id": user_id}, {"$set":{"reason": reason}})
 
 async def get_scan_users():
       list = []
