@@ -3,3 +3,4 @@ tgcrypto
 requests 
 telegraph
 pymongo[srv]
+motor
