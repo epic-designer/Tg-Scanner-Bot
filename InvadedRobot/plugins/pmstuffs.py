@@ -57,7 +57,6 @@ async def start(_, m: Message):
         await asyncio.sleep(3)
         await ll.delete()
     if m.from_user.id in (await RANK_USERS()):
-    if m.from_user.id in GODS:
         status = "Invaders"
     elif (await is_scan_user(m.from_user.id)) == True:
         status = "Globally Banned"
