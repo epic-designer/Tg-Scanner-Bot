@@ -2,6 +2,7 @@ import os
 import config
 import logging
 
+from motor import AsyncIOMotorClient
 from pyrogram import Client
 from pymongo import MongoClient
 
@@ -26,3 +27,7 @@ bot = Client(name=str(config.USERNAME),
 # mongodb from pymongo #
 pymongo = MongoClient(config.DB_URL)
 pymongodb = pymongo.bot
+
+# mongodb from motor #
+mongo = AsyncIOMotorClient(DB_URL)
+mongodb = mongo.bot 
