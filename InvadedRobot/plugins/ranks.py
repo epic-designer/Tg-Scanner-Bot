@@ -12,7 +12,7 @@ from InvadedRobot.helpers.ranksdb import *
 from InvadedRobot.helpers.troopsdb import *
 
 
-@bot.on_message(filters.command("setrank"))
+@bot.on_message(filters.command("rank"))
 async def rank(_, message):
     reply = message.reply_to_message
     user_id = message.from_user.id
@@ -80,7 +80,7 @@ async def demote_to_civilian(_, query):
            await remove_troop(user_id)
            await query.message.edit("`Successfully Demoted to Civilian!`")
    except Exception as e:
-       await message.reply_photo(media.ERROR_IMG, caption=e)
+       await query.message.reply_photo(media.ERROR_IMG, caption=e)
 
 
 
