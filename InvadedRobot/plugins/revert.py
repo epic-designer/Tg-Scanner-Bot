@@ -15,6 +15,8 @@ async def revert(_, message):
       msg = await message.reply_text("`reverting scan.`")
       if not user_id in (await RANK_USERS()):
           return msg.edit("`you don't have enough rights to use me.`")
+      elif len(message.command) <2:
+           return await msg.edit("`use correct format for reverting..`")
       elif reply:
            try:
               user_id = int(reply.from_user.id)
