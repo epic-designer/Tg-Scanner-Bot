@@ -1,4 +1,4 @@
-importimport config
+import config
 import strings
 
 from pyrogram import *
