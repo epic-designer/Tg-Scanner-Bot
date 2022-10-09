@@ -1,9 +1,8 @@
 SCAN_TEXT = """
-**Scan Processed Time And Date**: `{}`
-
-
 • **Scanned User**: {}
 • **Reason**: `{}`
+
+**Scan Processed Time And Date**: `{}`
 """
 
 
