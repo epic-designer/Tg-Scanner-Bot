@@ -31,7 +31,7 @@ async def check(_, message):
                  date = details["date"]
                  proof = details["proof"]
                  await bot.send_message(message.chat.id, 
-                 text=strings.CHECK_TEXT.format(date,user_id,reason),
+                 text=strings.CHECK_TEXT.format(user_id,reason,date),
                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
                  await msg.delete()
          except Exception as e:
@@ -47,7 +47,7 @@ async def getproof(_, query):
         try:
            details = await get_scan_user(user_id)
            proof = details["proof"]
-           await query.message.reply_document(document=proof, caption=f"**Proof For***: `{user_id}`")
+           await query.message.reply_document(document=proof, caption=f"**Proof For**: `{user_id}`")
            await query.message.edit_reply_markup(reply_markup=None)
         except Exception as e:
                await query.message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
