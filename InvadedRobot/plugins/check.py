@@ -1,10 +1,10 @@
 import config
-
+import strings
 
 from pyrogram import filters
 from pyrogram.types import *
-from NandhaBot import bot
-from NandhaBot.helpers.scansdb import (
+from InvadedRobot import bot
+from InvadedRobot.helpers.scansdb import (
 get_scan_users, add_scan_user, get_scan_user,
  is_scan_user, remove_scan_user, update_scan_reason, update_scan_proof
 )
@@ -32,7 +32,7 @@ async def check(_, message):
                  date = details["date"]
                  proof = details["proof"]
                  await bot.send_message(message.chat.id, 
-                 text=CHECK_TEXT.format(user_id,reason,date),
+                 text=strings.CHECK_TEXT.format(user_id,reason,date),
                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("𝗚𝗘𝗧 𝗣𝗥𝗢𝗢𝗙",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
                  await msg.delete()
          except Exception as e:
