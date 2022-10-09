@@ -39,7 +39,7 @@ async def whois(_, message):
                   text += f"**➛ Username: @{data.username}**\n"
                   text += f"**➛ Perm Link: {mention}**\n"
                   text += f"**➛ Status**: `{status}`\n"
-                  text += f"**➛ is_Restricted**: `{is_scan}`"
+                  text += f"**➛ is_Restricted**: `{is_scan}`\n"
                   text += f"**➛ About:** `{data.bio}`\n"
                   return await msg.edit_text(text)
              else:
