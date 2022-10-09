@@ -52,7 +52,7 @@ async def whois(_, message):
                  text += f"**➛ Perm Link: {mention}**\n"
                  text += f"**➛ About:** `{data.bio}`\n"
                  text += f"**➛ Reason:** `{reason}`\n"
-                 text += f"**:: Scan Processed Time And Date:** `{date}`\n"
+                 text += f"**: : Scan Processed Time And Date:** `{date}`\n"
                  await bot.send_message(message.chat.id, text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
                  await msg.delete()
          except Exception as e:
