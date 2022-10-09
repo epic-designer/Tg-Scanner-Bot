@@ -15,7 +15,7 @@ it's {}
 
 from InvadedRobot import bot
 from pyrogram import filters
-from pyrogram import types
+from pyrogram.types import *
 
 @bot.on_message(filters.command("addrank"))
 async def addrank(_, message):
