@@ -7,4 +7,4 @@ LOG_GROUP_ID = -1001644486123
 COMMANDS = [".","?","/","!","$","#","~",]
 LOG_CHANNEL_ID = -1001558495242
 GROUP_URL = "https://t.me/InvadedSupport"
-DB_URL = "mongodb+srv://Invaded:Invaded999@cluster0.y7ilrwk.mongodb.net/?retryWrites=true&w=majority"
+DB_URL = "mongodb+srv://Bave999:Bave999@cluster0.1aheaa1.mongodb.net/?retryWrites=true&w=majority"
