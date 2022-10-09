@@ -10,6 +10,12 @@ from pyrogram import filters
 from pyrogram.types import *
 from pyrogram import enums
 
+BUTTON = InlineKeyboardMarkup([[
+InlineKeyboardButton("🔔",url=config.UPDATE_CHANNEL_URL),
+InlineKeyboardButton("🔊",url=config.LOG_CHANNEL_URL),
+InlineKeyboardButton("📊",url=config.SYSTEM_CHANNEL_URL),],[
+InlineKeyboardButton("🆘",callback_data="help"),]])
+
 @bot.on_message(filters.command("start"))
 async def start(_, message):
    user_id = message.from_user.id
@@ -35,7 +41,7 @@ async def start(_, message):
          is_rank = await status(user_id)
          is_scan = await is_scan_user(user_id)
          mention = message.from_user.mention
-         await message.reply_photo(media.PM_PHOTO, caption=PM_START_TEXT.format(mention, user_id,is_scan, is_rank))
+         await message.reply_photo(media.PM_PHOTO, caption=PM_START_TEXT.format(mention, user_id,is_scan, is_rank),reply_markup=BUTTON)
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
 
