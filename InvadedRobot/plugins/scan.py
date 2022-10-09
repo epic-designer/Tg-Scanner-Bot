@@ -69,5 +69,3 @@ async def scan(_, message):
             except Exception as e:
                   await msg.delete()
                   await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=e)
-      
-      
