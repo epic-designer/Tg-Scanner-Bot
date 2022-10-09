@@ -21,7 +21,7 @@ async def rank(_, message):
         await msg.delete()
     elif reply:
            user_id = int(reply.from_user.id)
-           if user_id in (await RANK_USER()):
+           if user_id in (await RANK_USERS()):
               await message.reply_text("`the user is Invaded you can demote Troops or Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("demoet to troops", callback_data=f"demote_to_troops:{user_id}"),],[
