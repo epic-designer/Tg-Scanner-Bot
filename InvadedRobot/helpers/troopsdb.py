@@ -28,7 +28,7 @@ async def remove_troop(user_id: int):
 
        troop_users = await get_troops()
 
-       lwayer_users.remove(user_id)
+       troop_users.remove(user_id)
 
        await troopsdb.update_one(
 
