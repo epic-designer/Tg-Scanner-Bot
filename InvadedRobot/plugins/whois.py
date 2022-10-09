@@ -47,7 +47,7 @@ async def whois(_, message):
                  text += "**➛ Last Name:** `{data.last_name}`"
                  text += "**➛ User Id: @{data.id}**"
                  text += "**➛ Username: @{data.username}**"
-                 text += "**➛ User Link: {data.mention}**""
+                 text += "**➛ User Link: {data.mention}**"
                  text += "**➛ About:** `{data.bio}`"
                  text += "**➛ Reason:** `{reason}`"
                  text += "**:: Scan Processed Time And Date:** `{date}`"
