@@ -1,37 +1,37 @@
 from InvadedRobot import mongodb
 
-lawyersdb = mongodb.lawyerdb
+troopsdb = mongodb.troopdb
 
-async def get_lawyers() -> list:
+async def get_troops() -> list:
 
-    lawyer_users = await lawyersdb.find_one({"user_id": "user_id"})
+    troop_users = await troopsdb.find_one({"user_id": "user_id"})
 
-    if not lawyer_users:
+    if not troop_users:
 
         return []
 
-    return lawyer_users["lawyer_users"]
+    return troop_users["troop_users"]
 
-async def add_lawyer(user_id: int):
+async def add_troop(user_id: int):
 
-      lawyer_users = await get_lawyers()
+      troop_users = await get_troops()
 
-      lawyer_users.append(user_id)
+      troop_users.append(user_id)
 
-      await lawyersdb.update_one(
+      await troopsdb.update_one(
 
-        {"user_id": "user_id"}, {"$set": {"lawyer_users": lawyer_users}}, upsert=True)
+        {"user_id": "user_id"}, {"$set": {"troop_users": troop_users}}, upsert=True)
 
       return True  
 
-async def remove_lawyer(user_id: int):
+async def remove_troop(user_id: int):
 
-       lawyer_users = await get_lawyers()
+       troop_users = await get_troops()
 
        lwayer_users.remove(user_id)
 
-       await lawyersdb.update_one(
+       await troopsdb.update_one(
 
-        {"user_id": "user_id"}, {"$set": {"lawyer_users": lawyer_users}}, upsert=True)
+        {"user_id": "user_id"}, {"$set": {"troop_users": troop_users}}, upsert=True)
 
        return True
