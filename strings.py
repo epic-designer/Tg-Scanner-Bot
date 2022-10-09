@@ -17,6 +17,7 @@ CHECK_TEXT = """
 PM_START_TEXT = """
 `Hello There I Am` `I⊃：INVΛ⊃≡⊃` `The Judgement Enforcing System`
 **Invaded Analysis Report :-**
+
  ➛ User: {}
  ➛ ID: `{}`
  ➛ Is Restricted: `{}`
@@ -26,6 +27,7 @@ PM_START_TEXT = """
 GROUP_START_TEXT = """
 `Hello There I Am` `I⊃：INVΛ⊃≡⊃` `The Judgement Enforcing System`
 Invaded Analysis Report :-
+
  ➛ Group: `{}`
  ➛ ID: `{}`
  ➛ Members Count: `{}`
