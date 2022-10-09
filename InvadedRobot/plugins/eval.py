@@ -11,11 +11,10 @@ from pyrogram import filters
 from pyrogram.types import *
 from InvadedRobot import bot
 
-DEVS = [5696053228, 1989750989, 5456798232]
 
 @bot.on_message(filters.command("sh",config.COMMANDS))
 def sh(_, m):
-    if m.from_user.id in DEVS:
+    if m.from_user.id in config.DEVS:
         code = m.text.replace(m.text.split(" ")[0], "")
         x = run(code)
         msg = m.reply(
@@ -25,7 +24,7 @@ def sh(_, m):
     else:
         m.reply("only Rank User can access this command!")
             
-@bot.on_message(filters.user(DEVS) & filters.command("eval",config.COMMANDS))
+@bot.on_message(filters.user(config.DEVS) & filters.command("eval",config.COMMANDS))
 async def eval(client, message):
     status_message = await message.reply_text("Processing ...")
     if len(message.command) <2:
