@@ -1,15 +1,14 @@
 import config
 import media
+import strings
 import asyncio
+
 from InvadedRobot import bot, inv
 from InvadedRobot.helpers.status import status
 from InvadedRobot.helpers.scandb import is_scan_user
 from pyrogram import filters
 from pyrogram.types import *
 from pyrogram import enums
-
-
-
 
 @bot.on_message(filters.command("start"))
 async def start(_, message):
@@ -46,12 +45,6 @@ async def start(_, message):
          await message.reply_photo(media.PM_PHOTO, caption=strings.GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count))
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=e)
-
-
-
-
-
-
 
 if __name__ == "__main__":
      bot.run()
