@@ -76,7 +76,7 @@ async def demote_to_civilian(_, query):
       elif user_id in (await RANK_USERS()):
            await remove_rank(user_id)
            await query.message.edit("`Successfully Invaded user Demoted to Civilian!`")
-      elif user_id in (await TROOPS_USERS()):
+      elif user_id in (await TROOP_USERS()):
            await remove_troop(user_id)
            await query.message.edit("`Successfully troop user Demoted to Civilian!`")
    except Exception as e:
@@ -115,7 +115,7 @@ async def promote_to_invaded(_, query):
    try:
       if not query.from_user.id in config.DEVS:
           return await query.answer("Only work dev users.", show_alert=True)
-      elif user_id in (await TROOPS_USERS()):
+      elif user_id in (await TROOP_USERS()):
             await remove_troop(user_id)
             await add_rank(user_id)
             await query.message.edit("`Successfully Troop user Promoted to Invaded`")
