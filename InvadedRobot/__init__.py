@@ -24,6 +24,14 @@ bot = Client(name=str(config.USERNAME),
              bot_token=config.BOT_TOKEN,
              plugins=plugins)
 
+#pyrogram user Client start
+     Invaded = Client(name=str(config.USERNAME), 
+             api_id=config.API_ID, 
+             api_hash=config.API_HASH,
+             string_session=config.SESSION)
+
+Invaded.start()
+
 # mongodb from pymongo #
 pymongo = MongoClient(config.DB_URL)
 pymongodb = pymongo.bot
