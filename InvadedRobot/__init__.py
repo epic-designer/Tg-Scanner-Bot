@@ -29,5 +29,5 @@ pymongo = MongoClient(config.DB_URL)
 pymongodb = pymongo.bot
 
 # mongodb from motor #
-mongo = AsyncIOMotorClient(DB_URL)
+mongo = AsyncIOMotorClient(config.DB_URL)
 mongodb = mongo.bot 
