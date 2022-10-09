@@ -23,6 +23,7 @@ async def revert(_, message):
               else:
                   await remove_scan_user(user_id)
                   await msg.edit("`Successfully revert a user.`") 
+                  #bot.send()
            except Exception as e:
                 await msg.edit(str(e))
       elif not reply:
@@ -33,6 +34,7 @@ async def revert(_, message):
                  else:
                       await remove_scan_user(user_id)
                       await msg.edit("`Successfully revert a user.`") 
+                      #bot.send()
              except Exception as e:
                     await msg.edit(str(e))
 
