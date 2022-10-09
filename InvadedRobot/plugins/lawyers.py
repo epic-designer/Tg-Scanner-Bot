@@ -48,17 +48,17 @@ async def addlawyer(_, message):
                   await msg.edit_text(str(e))
 
 @bot.on_message(filters.command("removelawyer"))
-async def removetroop(_, message):
+async def removelawyer(_, message):
       reply = message.reply_to_message
       chat_id = message.chat.id
       msg = await message.reply_text("processing removeing..")
       if not message.from_user.id in (await RANK_USERS()):
-           await msg.edit_text("only my rank user can add lawyers.")
+           await msg.edit_text("only my rank user can remove lawyers.")
       elif not reply:
          try:
            user_id_text = int(message.text.split(" ")[1])
            user = await bot.get_users(user_id_text)
-           if not user.id in (await LAWYERS ()):
+           if not user.id in (await LAWYERS()):
                await msg.edit("`your trying remove someone that person is not a lawyer user`")
            else:
               await remove_lawyer(user.id)
@@ -70,7 +70,7 @@ async def removetroop(_, message):
             try:
               user_id = reply.from_user.id
               user = await bot.get_users(user_id)
-              if not user.id in (await RANK_USERS()):
+              if not user.id in (await LAWYERS()):
                    await msg.edit("`your trying remove someone that person is not a lawyer user`")
               else:
                  await remove_lawyer(user.id)
