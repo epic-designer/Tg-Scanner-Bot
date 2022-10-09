@@ -1,6 +1,6 @@
 import config
 import media
-import strings
+from strings import *
 import asyncio
 
 from InvadedRobot import bot, inv
@@ -17,11 +17,21 @@ async def start(_, message):
      try:
          kk = await message.reply(text="`Analyzing The User`")
          await asyncio.sleep(2)
-         mm = await kk.edit_text("`...`")
+         await kk.edit(ANI0)
          await asyncio.sleep(1)
-         ll = await mm.edit_text("`Processing...`")
+         await kk.edit(ANI1)
          await asyncio.sleep(1)
-         await ll.delete()
+         await kk.edit(ANI2)
+         await asyncio.sleep(1)
+         await kk.edit(ANI3)
+         await asyncio.sleep(1)
+         await kk.edit(ANI4)
+         await asyncio.sleep(1)
+         await kk.edit(ANI5)
+         await asyncio.sleep(1)
+         await kk.edit(ANI6)
+         await asyncio.sleep(1)
+         await kk.delete() 
          is_rank = await status(user_id)
          is_scan = await is_scan_user(user_id)
          mention = message.from_user.mention
