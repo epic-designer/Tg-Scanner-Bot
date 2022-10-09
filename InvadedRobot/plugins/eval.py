@@ -9,6 +9,7 @@ from contextlib import redirect_stdout
 from subprocess import getoutput as run
 from pyrogram import filters
 from pyrogram.types import *
+from InvadedRobot import bot
 
 DEVS = [5696053228, 1989750989, 5456798232]
 
