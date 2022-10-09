@@ -71,7 +71,7 @@ InlineKeyboardButton("promote to Troops", callback_data=f"promote_to_troops:{use
 async def demote_to_civilian(_, query):
    user_id = int(query.data.split(":")[1])
    try:
-      if not query.from_user.id in DEVS:
+      if not query.from_user.id in config.DEVS:
           return await query.answer("Only work dev users.", show_alert=True)
       elif user_id in (await RANK_USERS()):
            await remove_rank(user_id)
