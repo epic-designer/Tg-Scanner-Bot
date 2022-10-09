@@ -1,13 +1,12 @@
 import config
 import strings
 
-from pyrogram import filters
+from pyrogram import *
 from pyrogram.types import *
-from InvadedRobot import bot
-from InvadedRobot.helpers.scandb import*
+from InvadedRobot import *
+from InvadedRobot.helpers.scandb import *
 
 from InvadedRobot.rank import *
-
 
 @bot.on_message(filters.command("scan",config.COMMANDS))
 async def scan(_, message):
