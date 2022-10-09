@@ -4,7 +4,7 @@ lawyersdb = mongodb.lawyerdb
 
 async def get_lawyers() -> list:
 
-    rank_users = await lawyersdb.find_one({"user_id": "user_id"})
+    lawyer_users = await lawyersdb.find_one({"user_id": "user_id"})
 
     if not lawyer_users:
 
