@@ -31,9 +31,9 @@ async def whois(_, message):
                   text = "**╒═══「 Invaded Results: 」**\n"
                   text += f"**➛ First Name:** `{data.first_name}`\n"
                   text += f"**➛ Last Name:** `{data.last_name}`\n"
-                  text += f"**➛ User Id: @{data.id}**\n"
+                  text += f"**➛ User Id: {data.id}**\n"
                   text += f"**➛ Username: @{data.username}**\n"
-                  text += f"**➛ User Link: {mention}**\n"
+                  text += f"**➛ Perm Link: {mention}**\n"
                   text += f"**➛ About:** `{data.bio}`\n"
                   return await msg.edit_text(text)
              else:
@@ -47,9 +47,9 @@ async def whois(_, message):
                  text = "**╒═══「 Invaded Results: 」**"
                  text += f"**➛ First Name:** `{data.first_name}`\n"
                  text += f"**➛ Last Name:** `{data.last_name}`\n"
-                 text += f"**➛ User Id: @{data.id}**\n"
+                 text += f"**➛ User Id: {data.id}**\n"
                  text += f"**➛ Username: @{data.username}**\n"
-                 text += f"**➛ User Link: {mention}**\n"
+                 text += f"**➛ Perm Link: {mention}**\n"
                  text += f"**➛ About:** `{data.bio}`\n"
                  text += f"**➛ Reason:** `{reason}`\n"
                  text += f"**:: Scan Processed Time And Date:** `{date}`\n"
