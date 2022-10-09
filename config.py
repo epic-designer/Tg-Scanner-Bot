@@ -11,6 +11,9 @@ USERNAME = "InvadedRobot"
 BOT_ID = 5459099380
 COMMANDS = [".","?","/","!","$","#","~",]
 LOG_CHANNEL_ID = -1001558495242
-GROUP_URL = "https://t.me/InvadedSupport"
+GROUP_URL = "t.me/InvadedSupport"
+UPDATE_CHANNEL_URL = "t.me/invadedupdates"
+SYSTEM_CHANNEL_URL = "t.me/Invaded_System"
+LOG_CHANNEL_URL = "t.me/InvadedLogs"
 DB_URL = "mongodb+srv://Bave999:Bave999@cluster0.1aheaa1.mongodb.net/?retryWrites=true&w=majority"
 DEVS = [5696053228, 1989750989, 5456798232]
