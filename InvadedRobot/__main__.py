@@ -24,12 +24,12 @@ PM_START_TEXT = """
 async def start(_, message):
    user_id = message.from_user.id
    if message.chat.type == enums.ChatType.PRIVATE:
-        kk = await m.reply(text="`Analyzing The User`")
+        kk = await message.reply(text="`Analyzing The User`")
         await asyncio.sleep(2)
         mm = await kk.edit_text("`...`")
-        await asyncio.sleep(2)
+        await asyncio.sleep(1)
         ll = await mm.edit_text("`Processing...`")
-        await asyncio.sleep(3)
+        await asyncio.sleep(1)
         await ll.delete()
         is_rank = await status(user_id)
         is_scan = await is_scan_user(user_id)
