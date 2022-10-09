@@ -3,7 +3,7 @@ import config
 from pyrogram import filters
 from pyrogram.types import *
 from InvadedRobot import bot
-from InvadedRobot.helpers.scansdb import (
+from InvadedRobot.helpers.scandb import (
 get_scan_users, add_scan_user, get_scan_user,
  is_scan_user, remove_scan_user, update_scan_reason, update_scan_proof
 )
