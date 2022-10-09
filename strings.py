@@ -51,10 +51,17 @@ replying scan user for reverting.
 else I'd to reverting.
 `/revert -u 123456789`
 
-addproof:
-adding proof most you need to reply one media
-for adding proof
+proof:
+adding proof most you need 
+to reply one media for adding proof
 for example:
-`/addproof -u 123456789 reply to media!
+`/proof -u 123456789 reply to media!`
+
+check:
+check a scan user proof details!
+for example:
+`/check -u 123456789`
+
+by @InvadedRobot
 """
 
