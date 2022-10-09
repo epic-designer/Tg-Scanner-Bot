@@ -27,16 +27,18 @@ async def whois(_, message):
                   user_id = message.reply_to_message.from_user.id
              if (await is_scan_user(user_id)) == False:
                   data = await bot.get_chat(user_id) 
+                  mention = f"[Click Here](tg://user?id={data.id})"
                   text = "**╒═══「 Invaded Results: 」**"
                   text += f"**➛ First Name:** `{data.first_name}`"
                   text += f"**➛ Last Name:** `{data.last_name}`"
                   text += f"**➛ User Id: @{data.id}**"
                   text += f"**➛ Username: @{data.username}**"
-                  text += f"**➛ User Link: {data.mention}**"
+                  text += f"**➛ User Link: {mention}**"
                   text += f"**➛ About:** `{data.bio}`"
                   return await msg.edit_text(text)
              else:
                  data = await bot.get_chat(user_id) 
+                 mention = f"[Click Here](tg://user?id={data.id})"
                  details = await get_scan_user(user_id)
                  user_id = details["user_id"]
                  reason = details["reason"]
@@ -47,7 +49,7 @@ async def whois(_, message):
                  text += f"**➛ Last Name:** `{data.last_name}`"
                  text += f"**➛ User Id: @{data.id}**"
                  text += f"**➛ Username: @{data.username}**"
-                 text += f"**➛ User Link: {data.mention}**"
+                 text += f"**➛ User Link: {mention}**"
                  text += f"**➛ About:** `{data.bio}`"
                  text += f"**➛ Reason:** `{reason}`"
                  text += f"**:: Scan Processed Time And Date:** `{date}`"
