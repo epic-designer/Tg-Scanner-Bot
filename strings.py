@@ -1,18 +1,17 @@
-
 SCAN_TEXT = """
-𝗦𝗖𝗔𝗡𝗡𝗘𝗗 𝗨𝗦𝗘𝗥:
-**ID**: `{}`
-**REASON**: 
-`{}`
+**Scan Processed Time And Date**: `{}`
 
-**SCAN DATE**: `{}`
+
+• **Scanned User**: `{}`
+• **Reason**: `{}`
 """
 
+
 CHECK_TEXT = """
-𝗦𝗖𝗔𝗡𝗡𝗘𝗗 𝗨𝗦𝗘𝗥:
-**ID**: `{}`
-**REASON**: 
+**Details Of Following User:-**
+**User Id**: `{}`
+**Reason**: 
 `{}`
 
-**SCAN DATE**: `{}`
+**Scan Processed Time And Date**: `{}`
 """
