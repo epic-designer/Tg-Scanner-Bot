@@ -2,6 +2,8 @@ from InvadedRobot.rank import RANK_USERS
 from InvadedRobot.helpers.ranksdb import (
 get_rankusers, add_rank , remove_rank)
 
+
+
 RANK_ADDED_TEXT = """
 new rank user arrived on bot
 it's {}
@@ -10,6 +12,10 @@ RANK_REMOVED_TEXT = """
 the rank user remove on bot
 it's {}
 """
+
+from InvadedRobot import bot
+from pyrogram import filters
+from pyrogram import types
 
 @bot.on_message(filters.command("addrank"))
 async def addrank(_, message):
