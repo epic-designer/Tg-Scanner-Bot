@@ -17,11 +17,7 @@ async def rank(_, message):
     user_id = message.from_user.id
     if not user_id in config.DEVS:
         msg = await message.reply_text("`only devs can access this.`")
-        asyncio.sleep(5)
-        await msg.delete()
-    elif len(message.command) <2:
-        msg = await message.reply_text("`you need to use correct formatting.`")
-        asyncio.sleep(5)
+        await asyncio.sleep(5)
         await msg.delete()
     elif reply:
            user_id = int(reply.from_user.id)
