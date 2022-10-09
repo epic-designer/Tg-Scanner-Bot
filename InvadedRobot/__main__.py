@@ -8,26 +8,8 @@ from pyrogram import filters
 from pyrogram.types import *
 from pyrogram import enums
 
-PM_PHOTO = "https://telegra.ph/file/e9a7b101e8fcc7e6b7381.jpg"
 
 
-PM_START_TEXT = """
-`Hello There I Am` `I⊃：INVΛ⊃≡⊃` `The Judgement Enforcing System`
-**Invaded Analysis Report :-**
- ➛ User: {}
- ➛ ID: `{}`
- ➛ Is Restricted: `{}`
- ➛ Status: `{}`
-"""
-
-GROUP_START_TEXT = """
-`Hello There I Am` `I⊃：INVΛ⊃≡⊃` `The Judgement Enforcing System`
-Invaded Analysis Report :-
- ➛ Group: `{}`
- ➛ ID: `{}`
- ➛ Members Count: `{}`
- ➛ Message Count: `{}`
-"""
 
 @bot.on_message(filters.command("start"))
 async def start(_, message):
@@ -44,7 +26,7 @@ async def start(_, message):
          is_rank = await status(user_id)
          is_scan = await is_scan_user(user_id)
          mention = message.from_user.mention
-         await message.reply_photo(PM_PHOTO, caption=PM_START_TEXT.format(mention, user_id,is_scan, is_rank))
+         await message.reply_photo(media.PM_PHOTO, caption=strings.PM_START_TEXT.format(mention, user_id,is_scan, is_rank))
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=e)
 
@@ -61,7 +43,7 @@ async def start(_, message):
          await ll.delete()
          chat_title = message.chat.title
          chat_id = message.chat.id
-         await message.reply_photo(PM_PHOTO, caption=GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count))
+         await message.reply_photo(media.PM_PHOTO, caption=strings.GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count))
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=e)
 
