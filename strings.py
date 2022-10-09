@@ -58,5 +58,3 @@ for example:
 `/addproof -u 123456789 reply to media!
 """
 
-
-"""
