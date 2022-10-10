@@ -31,7 +31,7 @@ def sh(_, m):
    
 @bot.on_message(filters.user(config.DEVS) & filters.command("eval",config.COMMANDS))
 async def eval(client, message):
-    status_message = await message.reply_text("Processing ...")
+    status_message = await message.reply_photo(""https://telegra.ph/file/06a754526911af5baecdf.jpg, "Processing ...")
     if len(message.command) <2:
         return await status_message.edit("`Give A Command To Run..`")
     cmd = message.text.split(" ", maxsplit=1)[1]
@@ -78,5 +78,5 @@ async def eval(client, message):
                 document=out_file, caption=cmd, disable_notification=True
             )
     else:
-        await reply_to_.reply_text(final_output)
+        await reply_to_.reply_photo(""https://telegra.ph/file/06a754526911af5baecdf.jpg, final_output)
     await status_message.delete()

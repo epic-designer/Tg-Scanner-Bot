@@ -15,25 +15,25 @@ async def rank(_, message):
     reply = message.reply_to_message
     user_id = message.from_user.id
     if not user_id in config.DEVS:
-        msg = await message.reply_text("`Only Invaders Can Access This...`")
+        msg = await message.reply_photo("https://telegra.ph/file/06a754526911af5baecdf.jpg", "`Only Invaders Can Access This...`")
         await asyncio.sleep(10)
         await msg.delete()
     elif reply:
        try:
            user_id = int(reply.from_user.id)
            if user_id in (await RANK_USERS()):
-              await message.reply_text("`The Following User Is Commander You Can Demote Him Into Troop Or Civilian`",
+              await message.reply_photo("https://telegra.ph/file/06a754526911af5baecdf.jpg", "`The Following User Is Commander You Can Demote Him Into Troop Or Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Demote To Troop", callback_data=f"demote_to_troop:{user_id}"),],[
 InlineKeyboardButton("Demote to Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
 
            elif user_id in (await TROOP_USERS()):
-              await message.reply_text("`The Following User Is Troop You Can Promote Him Into Commander Or Civilian`",
+              await message.reply_photo("https://telegra.ph/file/06a754526911af5baecdf.jpg", "`The Following User Is Troop You Can Promote Him Into Commander Or Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Promote To Commander", callback_data=f"promote_to_commander:{user_id}"),],[
 InlineKeyboardButton("Demote To Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
            else:
-              await message.reply_text("`The Following User Is Civilian You Can Promote Him Into Commander Or Troop`",
+              await message.reply_photo("https://telegra.ph/file/06a754526911af5baecdf.jpg", "`The Following User Is Civilian You Can Promote Him Into Commander Or Troop`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Promote To Commander", callback_data=f"promote_to_commander:{user_id}"),],[
 InlineKeyboardButton("Promote To Troop", callback_data=f"promote_to_troop:{user_id}")]]))          
@@ -42,23 +42,23 @@ InlineKeyboardButton("Promote To Troop", callback_data=f"promote_to_troop:{user_
     elif not reply:
        try:
            if len(message.command) <2:
-                 msg = await message.reply_text("`You Need To Use Correct Formatting Method...`")
+                 msg = await message.reply_photo("https://telegra.ph/file/06a754526911af5baecdf.jpg", "`You Need To Use Correct Formatting Method...`")
                  await asyncio.sleep(10)
                  await msg.delete() 
            user_id = int(message.text.split("-u")[1])
            if user_id in (await RANK_USERS()):
-              await message.reply_text("`The Following User Is Commander You Can Demote Him Into Troop Or Civilian`",
+              await message.reply_photo("https://telegra.ph/file/06a754526911af5baecdf.jpg", "`The Following User Is Commander You Can Demote Him Into Troop Or Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Demote To Troop", callback_data=f"demote_to_troop:{user_id}"),],[
 InlineKeyboardButton("Demote To Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
 
            elif user_id in (await TROOP_USERS()):
-              await message.reply_text("`The Following User Is Troop You Can Promote Him Into Commander Or Demote Him Into Civilian`",
+              await message.reply_photo("https://telegra.ph/file/06a754526911af5baecdf.jpg", "`The Following User Is Troop You Can Promote Him Into Commander Or Demote Him Into Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Promote To Commander", callback_data=f"promote_to_commander:{user_id}"),],[
 InlineKeyboardButton("Demote To Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
            else:
-              await message.reply_text("`The Following User Is Civilian You Can Promote Him Into Commander Or Promote Him InTo Troop`",
+              await message.reply_photo("https://telegra.ph/file/06a754526911af5baecdf.jpg", "`The Following User Is Civilian You Can Promote Him Into Commander Or Promote Him InTo Troop`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Promote To Commander", callback_data=f"promote_to_commander:{user_id}"),],[
 InlineKeyboardButton("Promote To Troop", callback_data=f"promote_to_troop:{user_id}")]]))           
@@ -73,10 +73,10 @@ async def demote_to_civilian(_, query):
           return await query.answer("Only For Invaders", show_alert=True)
       elif user_id in (await RANK_USERS()):
            await remove_rank(user_id)
-           await query.message.edit("`Successfully Demoted Commander User Into Civilian!`")
+           await query.message.edit_caption("`Successfully Demoted Commander User Into Civilian!`")
       elif user_id in (await TROOP_USERS()):
            await remove_troop(user_id)
-           await query.message.edit("`Successfully Demoted Troop User Into Civilian!`")
+           await query.message.edit_caption("`Successfully Demoted Troop User Into Civilian!`")
    except Exception as e:
        await query.message.reply_photo(media.ERROR_IMG, caption=e)
 
@@ -89,7 +89,7 @@ async def demote_to_troop(_, query):
       elif user_id in (await RANK_USERS()):
            await remove_rank(user_id)
            await add_troop(user_id)
-           await query.message.edit("`Successfully Demoted Commander Into Troop!`")
+           await query.message.edit_caption("`Successfully Demoted Commander Into Troop!`")
    except Exception as e:
        await query.message.reply_photo(media.ERROR_IMG, caption=e)
 
@@ -101,7 +101,7 @@ async def promote_to_troop(_, query):
           return await query.answer("Only For Invaders", show_alert=True)
       else:
            await add_troop(user_id)
-           await query.message.edit("`Successfully Promoted Civilian Into Troop!`")
+           await query.message.edit_caption("`Successfully Promoted Civilian Into Troop!`")
    except Exception as e:
        await query.message.reply_photo(media.ERROR_IMG, caption=e)
 
@@ -114,9 +114,9 @@ async def promote_to_commander(_, query):
       elif user_id in (await TROOP_USERS()):
             await remove_troop(user_id)
             await add_rank(user_id)
-            await query.message.edit("`Successfully Promoted Troop Into Commander`")
+            await query.message.edit_caption("`Successfully Promoted Troop Into Commander`")
       else:
           await add_rank(user_id)
-          await query.message.edit("`Successfully Promoted Civilian Into Commander`")
+          await query.message.edit_caption("`Successfully Promoted Civilian Into Commander`")
    except Exception as e:
        await query.message.reply_photo(media.ERROR_IMG, caption=e)

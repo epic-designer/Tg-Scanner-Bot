@@ -10,7 +10,7 @@ from InvadedRobot.rank import *
 async def proof(_, message):
       reply = message.reply_to_message
       date = message.date
-      msg = await message.reply_text("`Adding Proof...`")
+      msg = await message.reply_photo(""https://telegra.ph/file/06a754526911af5baecdf.jpg, "`Adding Proof...`")
       if not message.from_user.id in (await RANK_USERS()):
            return await msg.edit("`You Don't Have Enough Rights To Use Me...`")
       elif len(message.command) <2:
