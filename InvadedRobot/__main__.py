@@ -92,5 +92,5 @@ async def clode_menu(_, query):
 if __name__ == "__main__":
      bot.run()
      with bot:
-        bot.send_photo(chat_id=config.LOG_GROUP_ID,photo=(media.INVADED_IMG),caption="<b>I'm Awake Already!</b>",
-          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("𝗚𝗥𝗢𝗨𝗣!",url=f"{config.GROUP_URL}")]]))
+        bot.send_video(chat_id=config.LOG_GROUP_ID,video=(media.INVADED_VID),caption="<b>Invaded Awakened Successfully !!!</b>",
+          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Summon Me",url="https://t.me/InvadedRobot?startgroup=True")]]))
