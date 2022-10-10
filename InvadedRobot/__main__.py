@@ -79,6 +79,14 @@ async def help_2(_, query):
          await asyncio.sleep(2)
          await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_2)
 
+@bot.on_callback_query(filters.regex("close_menu"))
+async def clode_menu(_, query):
+    if query.message.media:
+         await query.message.edit_caption(f"`menu closed by {query.from_user.first_name}`")
+    else:
+         await query.message.edit(f"`menu closed by {query.from_user.first_name}`")
+         
+
 
 if __name__ == "__main__":
      bot.run()
