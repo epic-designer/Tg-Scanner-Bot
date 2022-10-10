@@ -70,8 +70,10 @@ async def whois(_, message):
                      await msg.delete()
                      await bot.send_message(message.chat.id, text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
          except Exception as e:
-              if "valid file id" in e:
-                  await msg.edit("`no proof found!`")
+                await msg.delete()
+                await message.reply_photo(media.ERROR_IMG, caption=f"`{e}`")
+
+              
               
 @bot.on_callback_query(filters.regex("getproof"))
 async def getproof(_, query):
@@ -85,4 +87,5 @@ async def getproof(_, query):
            await query.message.reply_document(document=proof, caption=f"**Proof Details For**: `{user_id}`")
            await query.message.edit_reply_markup(reply_markup=None)
         except Exception as e:
-               await query.message.reply_photo(media.ERROR_IMG, caption=f"`{e}`")
+             if "valid file id" in e:
+               await query.message.edit("`no proof found!`")
