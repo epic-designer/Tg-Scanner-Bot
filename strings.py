@@ -84,7 +84,7 @@ FORMAT_TEXT = """
 - `/whois` `(Reply To A User)`
 
 **Else If You're Using Id To Get Info About Someone:-**
-- `/whois 123456789` `(No Need To Reply To A User)`
+- `/whois -u 123456789` `(No Need To Reply To A User)`
 
 `: : Powered By Invaders`
 """
