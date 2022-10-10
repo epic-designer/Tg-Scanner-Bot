@@ -21,7 +21,7 @@ async def proof(_, message):
           try:           
              user_id = int(message.text.split("-u")[1])
              if not user_id in (await get_scan_users()):
-                 return await msg.edit("`This User Is Not Scanned The User Must To Been To Add Proof...`")
+                 return await msg.edit("`This User Is Not Scanned The User Must To Been Scanned To Add Proof...`")
 
              await update_scan_proof(user_id, message)
              await msg.edit("`Successfully Added Proof!`")   
