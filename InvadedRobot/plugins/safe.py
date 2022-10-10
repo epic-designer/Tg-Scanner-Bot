@@ -15,10 +15,11 @@ async def gitpull(_, message):
 
 @bot.on_message(filters.user(config.DEVS) & filters.command("restart",config.COMMANDS) & ~filters.forwarded)
 async def restart(_, message):
-    await message.reply_text("`Restarting...`")
+    k = await message.reply_text("`Restarting...`")
     await inv.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
     sys.exit()
+    await k.edit("`Restarted Successfully!!!`")
 
 @bot.on_message(filters.user(config.DEVS) & filters.command("shutdown",config.COMMANDS) & ~filters.forwarded)
 async def shutdown(event):
