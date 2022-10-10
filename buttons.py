@@ -8,7 +8,7 @@ InlineKeyboardButton("Skip Help",callback_data="help_2"),
 InlineKeyboardButton("Close menu",callback_data="close_menu")]])
 
 HELP_MENU_2 = InlineKeyboardMarkup([[
-InlineKeyboardButton("How Can I Scan",callbac)k_data="how_i_scan"),
+InlineKeyboardButton("How Can I Scan",callback_data="how_i_scan"),
 ],[
 InlineKeyboardButton("How Can I Check",callback_data="how_i_check"),
 ],[
