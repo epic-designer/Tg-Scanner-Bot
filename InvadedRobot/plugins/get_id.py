@@ -14,6 +14,8 @@ async def image_maker(_, message) -> None:
     x = await bot.download_media(
         message.reply_to_message.from_user.photo.big_file_id, file_name="user.png", in_memory=True
     )
+    user_photo = Image.open(x)
+    user_photo.save("user.png")
     user_photo = Image.open("user.png")
     k = ["https://telegra.ph/file/853962e208ec379284185.jpg", "https://telegra.ph/file/dd9a03db6d6f7cd577ad0.jpg"]
     y = random.choice(k)
