@@ -17,6 +17,14 @@ scan_approved_string = """
 : : **Scan Processed Time And Date**: `{}`
 """
 
+REQUEST_SCAN = """
+Approve/disapprove!
+**• Troop** = `{}`
+**• Target User** = `{}`
+**• reason** = `{}`
+**• proof** = `{}`
+: : **Scan Processed Time And Date**: `{}`
+"""
 
 CHECK_TEXT = """
 **Details Of Following User:-**
