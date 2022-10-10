@@ -13,17 +13,47 @@ from InvadedRobot.rank import *
 async def scan(_, message):
       reply = message.reply_to_message
       date = message.date
-      msg = await message.reply_text("`Scanning...`")
       rank = await status(message.from_user.id)
       if not message.from_user.id in (await RANK_USERS()):
           return await msg.edit("`You Don't Have Enough Rights To Scan...`")
       elif len(message.command) <2:
           return await msg.edit("`Get Format For Scan By Sending` `/formatting`")
+      elif reply and rank == "Troop":
+        try:
+            msg = await message.reply_text("`Requesting to Invaded...`")
+            user_id = int(reply.from_user.id)
+            reason = message.text.split("-r")[1].split("-p")[0]
+            proof = message.text.split("-p")[1]
+            mention = f"[{user_id}](tg://user?id={user_id})"
+            if (await is_scan_user(user_id)) == True:
+                 await msg.edit("`The user already scanned in Invaded no need request.`")
+            else:
+                #await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(mention, reason, proof, date))
+                 await msg.edit("the user Successfully requested to Invaded")
+        except Exception as e:
+            await msg.delete()
+            await message.reply_photo(media.ERROR_IMG, caption=e)
+      elif not reply and rank == "Troop":
+        try:
+            msg = await message.reply_text("`Requesting to Invaded...`")
+            user_id = int(message.text.split("-u")[1].split("-r")[0])
+            reason = message.text.split("-r")[1].split("-p")[0]
+            proof = message.text.split("-p")[1]
+            mention = f"[{user_id}](tg://user?id={user_id})"
+            if (await is_scan_user(user_id)) == True:
+                 await msg.edit("`The user already scanned in Invaded no need request.`")
+            else:
+                #await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(mention, reason, proof, date))
+                 await msg.edit("the user Successfully requested to Invaded")
+        except Exception as e:
+            await msg.delete()
+            await message.reply_photo(media.ERROR_IMG, caption=e)
       elif reply and rank == "Commander" or rank == "Invader":
          try:
             user_id = int(reply.from_user.id)
             reason = message.text.split("-r")[1]
             mention = f"[{user_id}](tg://user?id={user_id})"
+            msg = await message.reply_text("`Scanning...`")
             if (await is_scan_user(user_id)) == True:
                   await update_scan_reason(user_id,reason)
                   await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(message.from_user.id,mention,reason,date))
@@ -40,6 +70,7 @@ async def scan(_, message):
                user_id = int(message.text.split("-u")[1].split("-r")[0])
                reason = message.text.split("-r")[1]
                mention = f"[{user_id}](tg://user?id={user_id})"
+               msg = await message.reply_text("`Scanning...`")
                if (await is_scan_user(user_id)) == True:
                   await update_scan_reason(user_id,reason)
                   await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(message.from_user.id,mention,reason,date))
