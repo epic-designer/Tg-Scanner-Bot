@@ -13,7 +13,7 @@ from InvadedRobot.rank import *
 @bot.on_message(filters.command("whois",config.COMMANDS))
 async def whois(_, message):
        reply = message.reply_to_message
-       msg = await message.reply_photo(""https://telegra.ph/file/06a754526911af5baecdf.jpg, "`Checking Database...`")
+       msg = await message.reply_photo("`Checking Database...`")
        rank = await status(message.from_user.id)
        if rank == "Civilian":
             return await msg.edit_text("`Your Don't Have Enough Rights To Get Proof...`")
