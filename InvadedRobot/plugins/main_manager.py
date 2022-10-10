@@ -124,7 +124,7 @@ async def approve_scan(_, query):
        else:
            await add_scan_user(scan_user_id, reason, date)
            await query.message.edit(f"`the scan was approved but you need to add proof manually here the proof link:``{proof}`")
-           await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention, scan_user_mention, reason, date))
+           await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention,scan_user_mention,reason,date))
      except Exception as e:
           await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
        
