@@ -14,6 +14,7 @@ scan_approved_string = """
 **• Target User** = {scam}
 **• Approved By** = {approved_by}
 **• Crime Coefficient** = Over 300
+
 : : **Scan Processed Time And Date**: `{}`
 """
 
@@ -55,36 +56,37 @@ GROUP_START_TEXT = """
 """
 
 FORMAT_TEXT = """
+**Here Is The Help For Formatting:-**
 
-note: you most need scan for rankuser rights.
+**• Scan Formatting Example:**
 
-scan:
-scan for example:
-it you replying someone for scan.
-`/scan -r scammer`
+**If You're Replying Someone To Scan:-**
+- `/scan -r scammer` `(Reply To A User)`
 
-else I'd to scan someone.
-`/scan -u 123456789 -r scammer`
+**Else If You're Using Id To Scan Someone:-**
+- `/scan -u 123456789 -r scammer` `(No Need To Reply To A User)`
 
-revert:
-replying scan user for reverting.
-`/revert: reply to user`
+**• Revert Formatting Example:**
 
-else I'd to reverting.
-`/revert -u 123456789`
+**If You're Reverting Someone's Scan:-**
+- `/revert` `(Reply To A User)`
 
-proof:
-adding proof most you need 
-to reply one media for adding proof
-for example:
-`/proof -u 123456789 reply to media!`
+**Else If You're Using Id To Revert Someone's Scan:-**
+- `/revert -u 123456789` `(No Need To Reply To A User)`
 
-check:
-check a scan user proof details!
-for example:
-`/check -u 123456789`
+**• Adding Proof Formatting Example:**
 
-by @InvadedRobot
+- `/proof -u 123456789` `(Reply To A Media Ex:- (Photo, Document, Video (Under 6Mb)))`
+
+**• Whois Formatting Example:**
+
+**If You're Replying Someone To Get Info About Them:-**
+- `/whois` `(Reply To A User)
+
+**Else If You're Using Id To Get Info About Someone:-**
+- `/whois 123456789` `(No Need To Reply To A User)`
+
+`: : Powered By Invaders`
 """
 
 ANI0 = "`[▒▒▒▒▒▒▒▒▒▒▒▒▒▒]` `0%`"
