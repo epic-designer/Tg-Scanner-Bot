@@ -1,9 +1,9 @@
 SCAN_TEXT = """
 #LethalEliminator
-**• Commander** = `{}`
-**• Target User** = {}
-**• Reason**: `{}`
-**• Crime Coefficient**= `Over 300`
+**• Commander** : `{}`
+**• Target User** : {}
+**• Reason** : `{}`
+**• Crime Coefficient** : `Over 300`
 
 : : **Scan Processed Time And Date**: `{}`
 """
