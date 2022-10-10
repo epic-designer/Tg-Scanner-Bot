@@ -5,6 +5,15 @@ SCAN_TEXT = """
 × **Scan Processed Time And Date**: `{}`
 """
 
+scan_approved_string = """
+#LethalEliminator
+**• Enforcer** = {enforcer}
+**• Target User** = {scam}
+**• Approved By** = {approved_by}
+**• Crime Coefficient**= Over 300
+: : **Scan Processed Time And Date**: `{}`
+"""
+
 
 CHECK_TEXT = """
 **Details Of Following User:-**
