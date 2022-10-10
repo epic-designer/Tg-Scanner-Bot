@@ -56,7 +56,7 @@ async def start(_, message):
          chat_id = message.chat.id
          await message.reply_photo(media.PM_PHOTO, caption=GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count),reply_markup=BUTTON)
      except Exception as e:
-         link = await bot.export_chat_invite_link(m.chat.id)
+         link = await bot.export_chat_invite_link(message.chat.id)
          await inv.join_chat(link)
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
          
