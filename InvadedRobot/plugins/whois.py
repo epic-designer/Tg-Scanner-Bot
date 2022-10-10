@@ -17,7 +17,8 @@ from InvadedRobot.rank import RANK_USERS
 async def whois(_, message):
        reply = message.reply_to_message
        msg = await message.reply_text("`Checking Database...`")
-       if not message.from_user.id in (await RANK_USERS()):
+       rank = await status(message.from_user.id)
+       if rank == "Civilian":
             return await msg.edit_text("`Your Don't Have Enough Rights To Get Proof...`")
        elif len(message.command) <2 and not message.reply_to_message:
             return await msg.edit_text("`Use A Correct Format To Check...`")
@@ -78,7 +79,8 @@ async def whois(_, message):
 @bot.on_callback_query(filters.regex("getproof"))
 async def getproof(_, query):
      user_id = int(query.data.split(":")[1])
-     if not query.from_user.id in (await RANK_USERS()):
+     rank = await status(query.from_user.id)
+     if rank == "Civilian":
          await query.answer("Your Don't Have Enough Rights To Get Proof", show_alert=True)
      else:
         try:
@@ -86,6 +88,5 @@ async def getproof(_, query):
            proof = details["proof"]
            await query.message.reply_document(document=proof, caption=f"**Proof Details For**: `{user_id}`")
            await query.message.edit_reply_markup(reply_markup=None)
-        except Exception as e:
-             if "valid file id" in e:
-               await query.message.edit("`no proof found!`")
+        except:
+           await query.message.edit("`how the *f commander scanned, Without adding proof!`")
