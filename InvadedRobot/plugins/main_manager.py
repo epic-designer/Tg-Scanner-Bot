@@ -1,5 +1,6 @@
 import config
 import strings
+import media
 
 from pyrogram import *
 from pyrogram.types import *
