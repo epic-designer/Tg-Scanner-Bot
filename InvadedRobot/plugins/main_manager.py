@@ -34,9 +34,9 @@ async def scan(_, message):
                  await msg.edit("`The user already scanned in Invaded no need request.`")
             else:
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Approve Scan",callback_data="approve_scan:{message.from_user.id}:{user_id}"),
+InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{message.from_user.id}:{user_id}:{reason}:{proof}:{date}"),
 ],[
-InlineKeyboardButton("Disapprove Scan",callback_data="disapprove_scan:{message.from_user.id}:{user_id}")]]))
+InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{message.from_user.id}:{user_id}:{reason}:{proof}:{date}")]]))
                 await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
