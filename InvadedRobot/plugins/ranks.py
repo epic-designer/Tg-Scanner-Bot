@@ -2,11 +2,11 @@ import config
 import asyncio
 import media
 
-from pyrogram import filters
+from pyrogram import *
 from pyrogram.types import *
 
-from InvadedRobot import bot
-from InvadedRobot.rank import RANK_USERS , TROOP_USERS
+from InvadedRobot import *
+from InvadedRobot.rank import *
 from InvadedRobot.helpers.ranksdb import *
 from InvadedRobot.helpers.troopsdb import *
 
