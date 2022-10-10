@@ -64,8 +64,10 @@ async def whois(_, message):
                  text += f"**➛ Reason:** `{reason}`\n"
                  text += f"**: : Scan Processed Time And Date:** `{date}`\n"
              if proof == None:
+                 await msg.delete()
                  await bot.send_message(message.chat.id, text, disable_web_page_preview=True)
              else:
+                 await msg.delete()
                  await bot.send_message(message.chat.id, text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
                 await msg.delete()
          except Exception as e:
