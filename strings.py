@@ -1,8 +1,11 @@
 SCAN_TEXT = """
-• **Scanned User**: {}
-• **Reason**: `{}`
+#LethalEliminator
+**• Commander** = `{}`
+**• Target User** = `{}`
+**• Reason**: `{}`
+**• Crime Coefficient**= `Over 300`
 
-× **Scan Processed Time And Date**: `{}`
+: : **Scan Processed Time And Date**: `{}`
 """
 
 scan_approved_string = """
