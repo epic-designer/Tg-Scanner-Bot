@@ -1,6 +1,5 @@
 from telegraph import upload_file
-from InvadedRobot import bot
-from pyrogram import filters
+
 
 async def telegraph(message):
         if not message.reply_to_message or not message.reply_to_message.media:
@@ -18,6 +17,3 @@ async def telegraph(message):
                 return await message.reply_animation(animation=url,caption=url)
 
 
-@bot.on_message(filters.command("tm"))
-async def tm(_, message):
-       await telegraph(message)
