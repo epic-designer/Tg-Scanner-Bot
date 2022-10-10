@@ -108,10 +108,10 @@ async def approve_scan(_, query):
 
      date_time = date
      scan_user_id = query.data.split(":")[1]
-     troop_user_id = query.data.split(":")[2]
-     approved_user_id = query.data.split(":")[5]
-     reason = query.data.split(":")[3]
-     proof = query.data.split(":")[4]
+     troop_user_id = query.data.split(":")[4]
+
+     reason = query.data.split(":")[2]
+     proof = query.data.split(":")[3]
      rank = await status(query.from_user.id)
      scan_user_mention = f"[{scan_user_id}](tg://user?id={scan_user_id})"
      troop_user_mention = f"[{troop_user_id}](tg://user?id={troop_user_id})"
