@@ -6,7 +6,7 @@ from pyrogram import *
 from pyrogram.types import *
 from InvadedRobot import *
 from InvadedRobot.helpers.scandb import *
-from InvadedRobot.helpers.status import status
+from InvadedRobot.helpers.status import *
 
 from InvadedRobot.rank import *
 
