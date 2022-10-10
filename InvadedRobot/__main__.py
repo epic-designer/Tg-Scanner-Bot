@@ -2,6 +2,7 @@ import config
 import media
 from strings import *
 import asyncio
+import buttons
 
 from InvadedRobot import bot, inv
 from InvadedRobot.helpers.status import status
@@ -54,6 +55,19 @@ async def start(_, message):
          await message.reply_photo(media.PM_PHOTO, caption=GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count),reply_markup=BUTTON)
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
+
+
+@bot.on_callback_query(filters.regex("help"))
+async def help_menu(_, query):
+    if query.message.media:
+         msg = await query.message.edit_caption("`opening help menu....`")
+         await asyncio.sleep(2)
+         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU)
+    else:
+         msg = await query.message.edit("`opening help menu....`")
+         await asyncio.sleep(2)
+         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU)
+
 
 if __name__ == "__main__":
      bot.run()
