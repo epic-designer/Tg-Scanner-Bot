@@ -16,7 +16,7 @@ async def formatting(_, message):
 
 @bot.on_message(filters.command("scan",config.COMMANDS))
 async def scan(_, message):
-      global a_troop_id, a_scan_id, a_reason, a_proof, date
+      global date
       reply = message.reply_to_message
       date = message.date
       rank = await status(message.from_user.id)
@@ -34,12 +34,8 @@ async def scan(_, message):
             if (await is_scan_user(user_id)) == True:
                  await msg.edit("`The user already scanned in Invaded no need request.`")
             else:
-                a_troop_id = message.from_user.id
-                a_scan_id = int(reply.from_user.id)
-                a_reason = message.text.split("-r")[1].split("-p")[0]
-                a_proof = message.text.split("-p")[1]
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan"),
+InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}"),
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                 await msg.edit("the user Successfully requested to Invaded")
@@ -58,7 +54,7 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                  await msg.edit("`The user already scanned in Invaded no need request.`")
             else:
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan"),
+InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}"),
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                 await msg.edit("the user Successfully requested to Invaded")
@@ -102,38 +98,11 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
 
 
 
-@bot.on_callback_query(filters.regex("approve_scan"))
-async def approve_scan(_, query):
-     troop_user_id = a_troop_id
-     scan_user_id = a_scan_id
-     reason = a_reason
-     proof = a_proof
-     date_time = date
-     rank = await status(query.from_user.id)
-     scan_user_mention = f"[{scan_user_id}](tg://user?id={scan_user_id})"
-     troop_user_mention = f"[{troop_user_id}](tg://user?id={troop_user_id})"
-     user_mention = f"[{query.from_user.id}](tg://user?id={query.from_user.id})"
-     try:
-       if rank == "Civilian" or rank == "Troop":
-           await query.answer("You don't have enough rights!", show_alert=True)
-       elif (await is_scan_user(scan_user_id)) == True:
-           await query.answer("This User Already Scanned!", show_alert=True)
-       else:
-           await add_scan_user(scan_user_id, reason, date)
-           await query.message.edit(f"`the scan was approved but you need to add proof manually here the proof link:``{proof}`")
-           await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention, scan_user_mention,user_mention, reason, date_time))
-     except Exception as e:
-          await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
-        
-
-
-
-         
 
 
 
 
-
+       
 
 
 
