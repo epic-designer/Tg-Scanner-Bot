@@ -11,10 +11,10 @@ from io import BytesIO
 async def image_maker(_, message) -> None:
     replied_user = message.reply_to_message
     # Download profile photo
-    await bot.download_profile_photo(
-        replied_user.from_user.id, file="user.png", download_big=True
+    await bot.download_media(
+        replied_user.photo.file_id, file="user.png", download_big=True
     )
-    k = ["https://telegra.ph/file/853962e208ec379284185.jpg", ""]
+    k = ["https://telegra.ph/file/853962e208ec379284185.jpg", "https://telegra.ph/file/dd9a03db6d6f7cd577ad0.jpg"]
     y = random.choice(k)
     # open id photo
     id_template = Image.open(io.BytesIO(requests.get(y).content))
