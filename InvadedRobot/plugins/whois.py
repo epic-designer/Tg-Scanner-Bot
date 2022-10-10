@@ -70,9 +70,9 @@ async def whois(_, message):
                      await msg.delete()
                      await bot.send_message(message.chat.id, text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
          except Exception as e:
-              await msg.delete()
-              await message.reply_photo(media.ERROR_IMG, caption=f"`{e}`")
-
+              if "valid file id" in e:
+                  await msg.edit("`no proof found!`")
+              
 @bot.on_callback_query(filters.regex("getproof"))
 async def getproof(_, query):
      user_id = int(query.data.split(":")[1])
