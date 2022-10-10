@@ -8,11 +8,12 @@ SCAN_TEXT = """
 : : **Scan Processed Time And Date**: `{}`
 """
 
-scan_approved_string = """
+SCAN_APPROVED = """
 **#LethalEliminator**
-**• Troop** = {troop}
-**• Target User** = {scam}
-**• Approved By** = {approved_by}
+**• Troop** = `{}`
+**• Target User** = `{}`
+**• Approved By** = `{}`
+**• Reason** : `{}`
 **• Crime Coefficient** = Over 300
 
 : : **Scan Processed Time And Date**: `{}`
