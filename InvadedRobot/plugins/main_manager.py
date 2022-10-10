@@ -16,6 +16,7 @@ async def formatting(_, message):
 
 @bot.on_message(filters.command("scan",config.COMMANDS))
 async def scan(_, message):
+      global a_t_id, a_s_id, a_r, a_p, date
       reply = message.reply_to_message
       date = message.date
       rank = await status(message.from_user.id)
@@ -33,14 +34,14 @@ async def scan(_, message):
             if (await is_scan_user(user_id)) == True:
                  await msg.edit("`The user already scanned in Invaded no need request.`")
             else:
-                t_id = message.from_user.id
-                s_id = int(reply.from_user.id)
-                r = message.text.split("-r")[1].split("-p")[0]
-                p = message.text.split("-p")[1]
+                a_t_id = message.from_user.id
+                a_s_id = int(reply.from_user.id)
+                a_r = message.text.split("-r")[1].split("-p")[0]
+                a_p = message.text.split("-p")[1]
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{t_id}:{s_id}:{r}:{p}:{date}"),
+InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan"),
 ],[
-InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{t_id}")]]))
+InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                 await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
@@ -57,9 +58,9 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{t_id}")]
                  await msg.edit("`The user already scanned in Invaded no need request.`")
             else:
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{uid}:{user_id}:{reason}:{proof}:{date}"),
+InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan"),
 ],[
-InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{uid}")]]))
+InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                 await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
@@ -103,11 +104,11 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{uid}")]]
 
 @bot.on_callback_query(filters.regex("approve_scan"))
 async def approve_scan(_, query):
-     troop_user_id = int(query.data.split(":")[1])
-     scan_user_id = int(query.data.split(":")[2])
-     reason = query.data.split(":")[3]
-     proof = query.data.split(":")[4]
-     date = query.data.split(":")[5]
+     troop_user_id = a_t_id
+     scan_user_id = a_s_id
+     reason = a_r
+     proof = a_p
+     date = date
      rank = await status(query.from_user.id)
      scan_user_mention = f"[{scan_user_id}](tg://user?id={scan_user_id})"
      troop_user_mention = f"[{troop_user_id}](tg://user?id={troop_user_id})"
