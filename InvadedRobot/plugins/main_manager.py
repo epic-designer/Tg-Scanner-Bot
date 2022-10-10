@@ -39,7 +39,8 @@ async def scan(_, message):
 InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}:{troop_id}"),
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
-               req_msg = await msg.edit("the user Successfully requested to Invaded")
+               await msg.delete()
+               req_msg = await message.reply_text("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
             await message.reply_photo(media.ERROR_IMG, caption=e)
@@ -59,7 +60,8 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
 InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}:{troop_id}"),
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
-               req_msg = await msg.edit("the user Successfully requested to Invaded")
+               await msg.delete()
+               req_msg = await message.reply_text("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
             await message.reply_photo(media.ERROR_IMG, caption=e)
