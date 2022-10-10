@@ -32,7 +32,7 @@ async def scan(_, message):
 InlineKeyboardButton("Approve Scan",callback_data="approve_scan:{message.from_user.id}:{user_id}"),
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data="disapprove_scan:{message.from_user.id}:{user_id}")]]))
-                 await msg.edit("the user Successfully requested to Invaded")
+                await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
             await message.reply_photo(media.ERROR_IMG, caption=e)
