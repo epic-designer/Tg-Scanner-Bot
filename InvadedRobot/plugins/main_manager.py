@@ -16,7 +16,7 @@ async def formatting(_, message):
 
 @bot.on_message(filters.command("scan",config.COMMANDS))
 async def scan(_, message):
-      global date
+      global date, req_msg
       reply = message.reply_to_message
       date = message.date
       rank = await status(message.from_user.id)
@@ -39,7 +39,7 @@ async def scan(_, message):
 InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}:{troop_id}"),
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
-                await msg.edit("the user Successfully requested to Invaded")
+               req_msg = await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
             await message.reply_photo(media.ERROR_IMG, caption=e)
@@ -59,7 +59,7 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
 InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}:{troop_id}"),
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
-                await msg.edit("the user Successfully requested to Invaded")
+               req_msg = await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
             await message.reply_photo(media.ERROR_IMG, caption=e)
@@ -125,6 +125,7 @@ async def approve_scan(_, query):
            await add_scan_user(scan_user_id, reason, date)
            await query.message.edit(f"`the scan was approved but you need to add proof manually here the proof link:``{proof}`")
            await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention,scan_user_mention,approved_user_mention,reason,date))
+           await req_msg.edit("`Your request is Successfully Accepted.`")
      except Exception as e:
           await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
        
