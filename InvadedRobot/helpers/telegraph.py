@@ -4,7 +4,7 @@ from pyrogram import filters
 
 async def telegraph(message):
         if not message.reply_to_message and not message.reply_to_message.media:
-            await message.reply_text("`reply to photo or document to upload telegraph note: it file size almost lessen 6mb`")
+            return await message.reply_text("`reply to photo or document to upload telegraph note: it file size almost lessen 6mb`")
         else:
            path = await message.reply_to_message.download()
            telegraph = upload_file(path)
