@@ -9,21 +9,20 @@ SCAN_TEXT = """
 """
 
 scan_approved_string = """
-#LethalEliminator
+**#LethalEliminator**
 **• Troop** = {troop}
 **• Target User** = {scam}
 **• Approved By** = {approved_by}
-**• Crime Coefficient**= Over 300
+**• Crime Coefficient** = Over 300
 : : **Scan Processed Time And Date**: `{}`
 """
 
 REQUEST_SCAN = """
-Approve/disapprove!
+**$SCAN**
+`{}` **Is Requesting a Cymatic Scan For** {}
+**Scan Reason:** `{}`
+**Proof Message:** `{}` 
 
-**• Troop** = `{}`
-**• Target User** = {}
-**• reason** = `{}`
-**• proof** = `{}`
 : : **Scan Processed Time And Date**: `{}`
 """
 
