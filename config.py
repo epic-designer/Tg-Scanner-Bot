@@ -11,6 +11,7 @@ USERNAME = "InvadedRobot"
 BOT_ID = 5459099380
 COMMANDS = [".","?","/","!","$","#","~",]
 LOG_CHANNEL_ID = -1001558495242
+GBAN_MSG_LOGS = ""
 GROUP_URL = "t.me/InvadedSupport"
 UPDATE_CHANNEL_URL = "t.me/invadedupdates"
 SYSTEM_CHANNEL_URL = "t.me/Invaded_System"
