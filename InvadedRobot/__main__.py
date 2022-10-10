@@ -4,12 +4,11 @@ from strings import *
 import asyncio
 import buttons
 
-from InvadedRobot import bot, inv
-from InvadedRobot.helpers.status import status
-from InvadedRobot.helpers.scandb import is_scan_user
-from pyrogram import filters
+from InvadedRobot import *
+from InvadedRobot.helpers.status import *
+from InvadedRobot.helpers.scandb import *
+from pyrogram import *
 from pyrogram.types import *
-from pyrogram import enums
 
 BUTTON = InlineKeyboardMarkup([[
 InlineKeyboardButton("🔔",url=config.UPDATE_CHANNEL_URL),
@@ -45,7 +44,6 @@ async def start(_, message):
          await message.reply_photo(media.PM_PHOTO, caption=PM_START_TEXT.format(mention, user_id,is_scan, is_rank),reply_markup=BUTTON)
      except Exception as e:
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
-
    else:
      try:
          if message.chat.username == None:
@@ -62,38 +60,35 @@ async def start(_, message):
          await inv.join_chat(link)
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
          
-
 @bot.on_callback_query(filters.regex("help_1"))
 async def help_1(_, query):
     if query.message.media:
-         msg = await query.message.edit_caption("`opening help menu....`")
+         msg = await query.message.edit_caption("`Opening Help Menu...`")
          await asyncio.sleep(2)
-         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_1)
+         await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_1)
     else:
-         msg = await query.message.edit("`opening help menu....`")
+         msg = await query.message.edit("`Opening Help Menu...`")
          await asyncio.sleep(2)
-         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_1)
+         await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_1)
 
 @bot.on_callback_query(filters.regex("help_2"))
 async def help_2(_, query):
     if query.message.media:
-         msg = await query.message.edit_caption("`opening help menu....`")
+         msg = await query.message.edit_caption("`Opening Help Menu...`")
          await asyncio.sleep(2)
-         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_2)
+         await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_2)
     else:
-         msg = await query.message.edit("`opening help menu....`")
+         msg = await query.message.edit("`Opening Help Menu...`")
          await asyncio.sleep(2)
-         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_2)
+         await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_2)
 
 @bot.on_callback_query(filters.regex("close_menu"))
 async def clode_menu(_, query):
     if query.message.media:
-         await query.message.edit_caption(f"`menu closed by {query.from_user.first_name}`")
+         await query.message.edit_caption(f"`Help Menu Was Closed By {query.from_user.first_name}`")
     else:
-         await query.message.edit(f"`menu closed by {query.from_user.first_name}`")
+         await query.message.edit(f"`Help Menu Was Closed By {query.from_user.first_name}`")
          
-
-
 if __name__ == "__main__":
      bot.run()
      with bot:
