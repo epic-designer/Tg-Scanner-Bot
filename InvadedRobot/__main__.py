@@ -48,14 +48,20 @@ async def start(_, message):
 
    else:
      try:
+         if message.chat.username == None:
+             await inv.join_chat(message.chat.id)
+         else:
+             await inv.join_chat(message.chat.username)
          member_count = int(await bot.get_chat_members_count(message.chat.id))
          msg_count = int(await inv.search_messages_count(message.chat.id))
          chat_title = message.chat.title
          chat_id = message.chat.id
          await message.reply_photo(media.PM_PHOTO, caption=GROUP_START_TEXT.format(chat_title,chat_id, member_count,msg_count),reply_markup=BUTTON)
      except Exception as e:
+         link = await bot.export_chat_invite_link(m.chat.id)
+         await inv.join_chat(link)
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
-
+         
 
 @bot.on_callback_query(filters.regex("help_1"))
 async def help_1(_, query):
