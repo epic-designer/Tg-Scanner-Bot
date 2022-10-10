@@ -1,7 +1,7 @@
 SCAN_TEXT = """
 #LethalEliminator
 **• Commander** = `{}`
-**• Target User** = `{}`
+**• Target User** = {}
 **• Reason**: `{}`
 **• Crime Coefficient**= `Over 300`
 
