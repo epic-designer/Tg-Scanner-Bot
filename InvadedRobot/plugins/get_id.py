@@ -12,7 +12,7 @@ from io import BytesIO
 async def image_maker(_, message) -> None:
     # Download profile photo
     await bot.download_media(
-        message.reply_to_message.photo.file_id, file="user.png", download_big=True
+        message.reply_to_message.photo.big_file_id, file="user.png", download_big=True
     )
     k = ["https://telegra.ph/file/853962e208ec379284185.jpg", "https://telegra.ph/file/dd9a03db6d6f7cd577ad0.jpg"]
     y = random.choice(k)
