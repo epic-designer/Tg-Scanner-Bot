@@ -1,6 +1,5 @@
-"Function To Get Rank Users For Special Access"
-from InvadedRobot.helpers.ranksdb import get_rankusers
-from InvadedRobot.helpers.troopsdb import get_troops
+from InvadedRobot.helpers.ranksdb import *
+from InvadedRobot.helpers.troopsdb import *
 
 async def RANK_USERS():
      list = (await get_rankusers())
