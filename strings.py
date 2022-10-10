@@ -7,7 +7,7 @@ SCAN_TEXT = """
 
 scan_approved_string = """
 #LethalEliminator
-**• Enforcer** = {enforcer}
+**• Troop** = {troop}
 **• Target User** = {scam}
 **• Approved By** = {approved_by}
 **• Crime Coefficient**= Over 300
