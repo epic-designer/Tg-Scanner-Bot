@@ -22,10 +22,10 @@ def sh(_, m):
     if m.from_user.id in config.DEVS:
         code = m.text.replace(m.text.split(" ")[0], "")
         x = run(code)
-        msg = m.reply(
-            f"**SHELL**: `{code}`\n\n**OUTPUT**:\n`{x}`")
+        msg = m.reply_photo(
+            "https://telegra.ph/file/968b0c048e41f0bf75301.jpg", caption=f"**SHELL**: `{code}`\n\n**OUTPUT**:\n`{x}`")
         if len(m.command) <2:
-           msg.edit_text("`Give A Command To Run...`")    
+           msg.edit_caption("`Give A Command To Run...`")    
     else:
         return
    
@@ -78,5 +78,5 @@ async def eval(client, message):
                 document=out_file, caption=cmd, disable_notification=True
             )
     else:
-        await reply_to_.reply_text(final_output)
+        await reply_to_.reply_photo("https://telegra.ph/file/968b0c048e41f0bf75301.jpg", caption=final_output)
     await status_message.delete()
