@@ -39,7 +39,8 @@ async def whois(_, message):
                   text += f"**➛ Status**: `{rank_status}`\n"
                   text += f"**➛ Restricted**: `{is_scan}`\n"
                   text += f"**➛ About:** `{data.bio}`\n"
-                  return await msg.edit_text(text)
+                  await msg.delete()
+                  await message.reply_photo("https://telegra.ph/file/8ad8e27c568a41f48fce0.jpg", caption=text)
              else:
                  data = await bot.get_chat(user_id) 
                  mention = f"[Click Here](tg://user?id={data.id})"
@@ -63,10 +64,10 @@ async def whois(_, message):
                  text += f"**: : Scan Processed Time And Date:** `{date}`\n"
                  if proof == None:
                      await msg.delete()
-                     await bot.send_message(message.chat.id, text,reply_to_message_id=message.id ,disable_web_page_preview=True)
+                     await bot.send_photo(message.chat.id, "https://telegra.ph/file/8ad8e27c568a41f48fce0.jpg", caption=text, reply_to_message_id=message.id ,disable_web_page_preview=True)
                  else:
                      await msg.delete()
-                     await bot.send_message(message.chat.id, text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),reply_to_message_id=message.id,disable_web_page_preview=True)
+                     await bot.send_photo(message.chat.id, "https://telegra.ph/file/8ad8e27c568a41f48fce0.jpg", caption=text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),reply_to_message_id=message.id,disable_web_page_preview=True)
          except Exception as e:
                 await msg.delete()
                 await message.reply_photo(media.ERROR_IMG, caption=f"`{e}`")
@@ -84,4 +85,4 @@ async def getproof(_, query):
            await query.message.reply_document(document=proof, caption=f"**Case File For**: `{user_id}`")
            await query.message.edit_reply_markup(reply_markup=None)
         except:
-           await query.message.edit("`Sorry Our Commander Scanned Or Approved A Scan Without Adding Proof!`")
+           await query.message.edit_caption("`Sorry Our Commander Scanned Or Approved A Scan Without Adding Proof!`")
