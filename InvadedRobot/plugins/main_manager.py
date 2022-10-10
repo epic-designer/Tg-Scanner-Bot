@@ -114,23 +114,11 @@ async def approve_scan(_, query):
            return await query.answer("This User Already Scanned!", show_alert=True)
        else:
            await add_scan_user(scan_user_id, reason, date)
-           await query.message.edit(f"`the scan was approved but you need to add proof manually here the proof link:``{proof}`")
+           await query.message.delete()
+           await query.message.reply_text(f"`the scan was approved but you need to add proof manually here the proof link:``{proof}`")
            await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention, scan_user_mention,user_mention, reason, date))
      except Exception as e:
-          await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
-        
-
-
-
-         
-
-
-
-
-
-
-
-
+          await query.message.reply_photo(media.ERROR_IMG,caption=str(e))      
 
 @bot.on_message(filters.command("revert",config.COMMANDS))
 async def revert(_, message):
