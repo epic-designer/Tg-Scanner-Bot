@@ -1,5 +1,6 @@
 from telegraph import upload_file
 from InvadedRobot import bot
+from pyrogram import filters
 
 async def telegraph(message):
         if not message.reply_to_message and not message.reply_to_message.media:
