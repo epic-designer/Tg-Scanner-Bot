@@ -10,7 +10,7 @@ from pyrogram import *
 @bot.on_message(filters.user(config.DEVS) & filters.command("gitpull",config.COMMANDS) & ~filters.forwarded)
 async def gitpull(_, message):
     subprocess.Popen("git pull", stdout=subprocess.PIPE, shell=True)
-    await message.reply_photo("https://telegra.ph/file/720363b6527dc4cfbe989.jpg" caption="`Git Pulled Probably`")
+    await message.reply_photo("https://telegra.ph/file/720363b6527dc4cfbe989.jpg", caption="`Git Pulled Probably`")
     os.system("restart.bat")
     os.execv("start.bat", sys.argv)
 
