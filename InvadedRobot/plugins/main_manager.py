@@ -109,7 +109,6 @@ async def approve_scan(_, query):
      date_time = date
      scan_user_id = query.data.split(":")[1]
      troop_user_id = query.data.split(":")[4]
-
      reason = query.data.split(":")[2]
      proof = query.data.split(":")[3]
      rank = await status(query.from_user.id)
