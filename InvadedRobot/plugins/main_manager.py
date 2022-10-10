@@ -30,13 +30,14 @@ async def scan(_, message):
             reason = message.text.split("-r")[1].split("-p")[0]
             proof = message.text.split("-p")[1]
             mention = f"[{user_id}](tg://user?id={user_id})"
+            uid = message.from_user.id
             if (await is_scan_user(user_id)) == True:
                  await msg.edit("`The user already scanned in Invaded no need request.`")
             else:
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{message.from_user.id}:{user_id}:{reason}:{proof}:{date}"),
+InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{uid}:{user_id}:{reason}:{proof}:{date}"),
 ],[
-InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{message.from_user.id}")]]))
+InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{uid}")]]))
                 await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
