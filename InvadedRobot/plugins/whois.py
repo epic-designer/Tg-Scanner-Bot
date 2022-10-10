@@ -21,7 +21,7 @@ async def whois(_, message):
        if rank == "Civilian":
             return await msg.edit_text("`Your Don't Have Enough Rights To Get Proof...`")
        elif len(message.command) <2 and not message.reply_to_message:
-            return await msg.edit_text("`Use A Correct Format To Check...`")
+            return await msg.edit_text("`Reply To A User Or Give An Id To Get Info...`")
        else:
          try:
              if not message.reply_to_message:
@@ -73,9 +73,7 @@ async def whois(_, message):
          except Exception as e:
                 await msg.delete()
                 await message.reply_photo(media.ERROR_IMG, caption=f"`{e}`")
-
-              
-              
+                           
 @bot.on_callback_query(filters.regex("getproof"))
 async def getproof(_, query):
      user_id = int(query.data.split(":")[1])
@@ -86,7 +84,7 @@ async def getproof(_, query):
         try:
            details = await get_scan_user(user_id)
            proof = details["proof"]
-           await query.message.reply_document(document=proof, caption=f"**Proof Details For**: `{user_id}`")
+           await query.message.reply_document(document=proof, caption=f"**Case File For**: `{user_id}`")
            await query.message.edit_reply_markup(reply_markup=None)
         except:
-           await query.message.edit("`how the *f commander scanned, Without adding proof!`")
+           await query.message.edit("`Sorry Our Commander Scanned Or Approved A Scan Without Adding Proof!`")
