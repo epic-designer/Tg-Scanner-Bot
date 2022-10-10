@@ -30,7 +30,7 @@ inv = Client(name="Invaded",
              api_hash=config.APP_HASH,
              session_string=config.SESSION)
 
-inv.start()
+#inv.start()
 
 # mongodb from pymongo #
 pymongo = MongoClient(config.DB_URL)
