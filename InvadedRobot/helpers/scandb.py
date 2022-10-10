@@ -1,5 +1,5 @@
-from InvadedRobot import pymongodb
-from telegraph import upload_file
+from InvadedRobot import *
+from telegraph import *
 
 scansdb = pymongodb.SCANNER
 
