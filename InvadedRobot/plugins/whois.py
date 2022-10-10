@@ -53,7 +53,7 @@ async def whois(_, message):
                  proof = details["proof"]
                  rank_status = await status(data.id)
                  is_scan = await is_scan_user(data.id)
-                 text = "**╒═══「 Invaded Results: 」**"
+                 text = "**╒═══「 Invaded Results: 」**\n"
                  text += f"**➛ First Name:** `{data.first_name}`\n"
                  text += f"**➛ Last Name:** `{data.last_name}`\n"
                  text += f"**➛ User Id**: `{data.id}`\n"
