@@ -4,7 +4,7 @@ import config
 import subprocess
 
 from InvadedRobot import *
-from pyrogram import filters
+from pyrogram import *
 
 @bot.on_message(filters.user(config.DEVS) & filters.command("gitpull",config.COMMANDS) & ~filters.forwarded)
 async def gitpull(_, message):
