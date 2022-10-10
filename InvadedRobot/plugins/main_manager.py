@@ -96,7 +96,7 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{message.
 
 
 
-@bot.callback_query(filters.regex("approve_scan"))
+@bot.on_callback_query(filters.regex("approve_scan"))
 async def approve_scan(_, query):
      troop_user_id = int(query.data.split(":")[1])
      scan_user_id = int(query.data.split(":")[2])
