@@ -19,7 +19,7 @@ async def scan(_, message):
           return await msg.edit("`You Don't Have Enough Rights To Scan...`")
       elif len(message.command) <2:
           return await msg.edit("`Get Format For Scan By Sending` `/formatting`")
-      elif reply and rank == "Commander":
+      elif reply and rank == "Commander" or rank == "Invader":
          try:
             user_id = int(reply.from_user.id)
             reason = message.text.split("-r")[1]
@@ -35,7 +35,7 @@ async def scan(_, message):
          except Exception as e:
              await msg.delete()
              await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
-      elif not reply and rank == "Commander":
+      elif not reply and rank == "Commander" or rank == "Invader":
             try:
                user_id = int(message.text.split("-u")[1].split("-r")[0])
                reason = message.text.split("-r")[1]
