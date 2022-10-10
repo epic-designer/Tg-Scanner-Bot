@@ -15,7 +15,7 @@ BUTTON = InlineKeyboardMarkup([[
 InlineKeyboardButton("🔔",url=config.UPDATE_CHANNEL_URL),
 InlineKeyboardButton("🔊",url=config.LOG_CHANNEL_URL),
 InlineKeyboardButton("📊",url=config.SYSTEM_CHANNEL_URL),],[
-InlineKeyboardButton("🆘",callback_data="help"),]])
+InlineKeyboardButton("🆘",callback_data="help_1"),]])
 
 @bot.on_message(filters.command("start"))
 async def start(_, message):
@@ -57,16 +57,27 @@ async def start(_, message):
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
 
 
-@bot.on_callback_query(filters.regex("help"))
-async def help_menu(_, query):
+@bot.on_callback_query(filters.regex("help_1"))
+async def help_1(_, query):
     if query.message.media:
          msg = await query.message.edit_caption("`opening help menu....`")
          await asyncio.sleep(2)
-         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU)
+         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_1)
     else:
          msg = await query.message.edit("`opening help menu....`")
          await asyncio.sleep(2)
-         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU)
+         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_1)
+
+@bot.on_callback_query(filters.regex("help_2"))
+async def help_2(_, query):
+    if query.message.media:
+         msg = await query.message.edit_caption("`opening help menu....`")
+         await asyncio.sleep(2)
+         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_2)
+    else:
+         msg = await query.message.edit("`opening help menu....`")
+         await asyncio.sleep(2)
+         await msg.edit("here the help menu:",reply_markup=buttons.HELP_MENU_2)
 
 
 if __name__ == "__main__":
