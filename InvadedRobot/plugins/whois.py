@@ -1,6 +1,6 @@
 import config
 import strings
-
+import media
 
 from pyrogram import filters
 from pyrogram.types import *
@@ -39,7 +39,7 @@ async def whois(_, message):
                   text += f"**➛ Username: @{data.username}**\n"
                   text += f"**➛ Perm Link: {mention}**\n"
                   text += f"**➛ Status**: `{rank_status}`\n"
-                  text += f"**➛ is_Restricted**: `{is_scan}`\n"
+                  text += f"**➛ Restricted**: `{is_scan}`\n"
                   text += f"**➛ About:** `{data.bio}`\n"
                   return await msg.edit_text(text)
              else:
@@ -60,14 +60,14 @@ async def whois(_, message):
                  text += f"**➛ Perm Link: {mention}**\n"
                  text += f"**➛ About:** `{data.bio}`\n"
                  text += f"**➛ Status**: `{rank_status}`\n"
-                 text += f"**➛ is_Restricted**: `{is_scan}`\n\n"
+                 text += f"**➛ Restricted**: `{is_scan}`\n\n"
                  text += f"**➛ Reason:** `{reason}`\n"
                  text += f"**: : Scan Processed Time And Date:** `{date}`\n"
                  await bot.send_message(message.chat.id, text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Get Proof Details",callback_data=f"getproof:{user_id}"),]]),disable_web_page_preview=True)
                  await msg.delete()
          except Exception as e:
               await msg.delete()
-              await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
+              await message.reply_photo(media.ERROR_IMG, caption=f"`{e}`")
 
 @bot.on_callback_query(filters.regex("getproof"))
 async def getproof(_, query):
@@ -81,4 +81,4 @@ async def getproof(_, query):
            await query.message.reply_document(document=proof, caption=f"**Proof Details For**: `{user_id}`")
            await query.message.edit_reply_markup(reply_markup=None)
         except Exception as e:
-               await query.message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
+               await query.message.reply_photo(media.ERROR_IMG, caption=f"`{e}`")
