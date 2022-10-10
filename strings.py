@@ -81,7 +81,7 @@ FORMAT_TEXT = """
 **• Whois Formatting Example:**
 
 **If You're Replying Someone To Get Info About Them:-**
-- `/whois` `(Reply To A User)
+- `/whois` `(Reply To A User)`
 
 **Else If You're Using Id To Get Info About Someone:-**
 - `/whois 123456789` `(No Need To Reply To A User)`
