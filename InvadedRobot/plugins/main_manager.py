@@ -36,7 +36,7 @@ async def scan(_, message):
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{message.from_user.id}:{user_id}:{reason}:{proof}:{date}"),
 ],[
-InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{message.from_user.id}:{user_id}:{reason}:{proof}:{date}")]]))
+InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{message.from_user.id}")]]))
                 await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
@@ -52,9 +52,9 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{message.
                  await msg.edit("`The user already scanned in Invaded no need request.`")
             else:
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Approve Scan",callback_data="approve_scan:{message.from_user.id}:{user_id}"),
+InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{message.from_user.id}:{user_id}:{reason}:{proof}:{date}"),
 ],[
-InlineKeyboardButton("Disapprove Scan",callback_data="disapprove_scan:{message.from_user.id}:{user_id}")]]))
+InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{message.from_user.id}")]]))
                 await msg.edit("the user Successfully requested to Invaded")
         except Exception as e:
             await msg.delete()
@@ -93,6 +93,40 @@ InlineKeyboardButton("Disapprove Scan",callback_data="disapprove_scan:{message.f
             except Exception as e:
                   await msg.delete()
                   await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
+
+
+
+@bot.callback_query(filters.regex("approve_scan"))
+async def approve_scan(_, query):
+     troop_user_id = int(query.data.split(":")[1])
+     scan_user_id = int(query.data.split(":")[2])
+     reason = query.data.split(":")[3]
+     proof = query.data.split(":")[4]
+     date = query.data.split(":")[5]
+     rank = await status(query.from_user.id)
+     try:
+       if rank == "Civilian":
+          return await query.answer("You don't have enough rights!", show_alert=True)
+       elif (await is_scan_user(scan_user_id)) == True:
+           return await query.answer("This User Already Scanned!", show_alert=True)
+       else:
+           await add_scan_user(scan_user_id, reason, date)
+           await query.message.edit(f"`the scan was approved but you need to add proof manually here the proof link:``{proof}`")
+     except Exception as e:
+          await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
+        
+
+
+
+         
+
+
+
+
+
+
+
+
 
 @bot.on_message(filters.command("revert",config.COMMANDS))
 async def revert(_, message):
