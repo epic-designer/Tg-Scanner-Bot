@@ -4,13 +4,19 @@ import traceback
 import sys
 import config
 
-from contextlib import redirect_stdout
+from contextlib import *
 
 from subprocess import getoutput as run
-from pyrogram import filters
+from pyrogram import *
 from pyrogram.types import *
-from InvadedRobot import bot
+from InvadedRobot import *
 
+async def aexec(code, client, message):
+    exec(
+        "async def __aexec(client, message): "
+        + "".join(f"\n {l_}" for l_ in code.split("\n"))
+    )
+    return await locals()["__aexec"](client, message)
 
 @bot.on_message(filters.command("sh",config.COMMANDS))
 def sh(_, m):
@@ -20,15 +26,15 @@ def sh(_, m):
         msg = m.reply(
             f"**SHELL**: `{code}`\n\n**OUTPUT**:\n`{x}`")
         if len(m.command) <2:
-           msg.edit_text("`Give A Code Run`")    
+           msg.edit_text("`Give A Command To Run...`")    
     else:
-        m.reply("only Rank User can access this command!")
-            
+        return
+   
 @bot.on_message(filters.user(config.DEVS) & filters.command("eval",config.COMMANDS))
 async def eval(client, message):
     status_message = await message.reply_text("Processing ...")
     if len(message.command) <2:
-        return await status_message.edit("`GIVE CODE TO RUN..`")
+        return await status_message.edit("`Give A Command To Run..`")
     cmd = message.text.split(" ", maxsplit=1)[1]
 
     reply_to_ = message
@@ -75,12 +81,3 @@ async def eval(client, message):
     else:
         await reply_to_.reply_text(final_output)
     await status_message.delete()
-
-
-async def aexec(code, client, message):
-    exec(
-        "async def __aexec(client, message): "
-        + "".join(f"\n {l_}" for l_ in code.split("\n"))
-    )
-    return await locals()["__aexec"](client, message)
-
