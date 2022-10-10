@@ -10,11 +10,11 @@ SCAN_TEXT = """
 
 SCAN_APPROVED = """
 **#LethalEliminator**
-**• Troop** = `{}`
-**• Target User** = `{}`
-**• Approved By** = `{}`
+**• Troop** : **{}**
+**• Target User** : **{}**
+**• Approved By** : **{}**
 **• Reason** : `{}`
-**• Crime Coefficient** = Over 300
+**• Crime Coefficient** : `Over 300`
 
 : : **Scan Processed Time And Date**: `{}`
 """
