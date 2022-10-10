@@ -5,6 +5,7 @@ from pyrogram import *
 from pyrogram.types import *
 from InvadedRobot import *
 from InvadedRobot.helpers.scandb import *
+from InvadedRobot.helpers.status import status
 
 from InvadedRobot.rank import *
 
@@ -13,11 +14,12 @@ async def scan(_, message):
       reply = message.reply_to_message
       date = message.date
       msg = await message.reply_text("`Scanning...`")
+      rank = await status(message.from_user.id)
       if not message.from_user.id in (await RANK_USERS()):
           return await msg.edit("`You Don't Have Enough Rights To Scan...`")
       elif len(message.command) <2:
           return await msg.edit("`Get Format For Scan By Sending` `/formatting`")
-      elif reply:
+      elif reply and rank == "Commander":
          try:
             user_id = int(reply.from_user.id)
             reason = message.text.split("-r")[1]
@@ -33,7 +35,7 @@ async def scan(_, message):
          except Exception as e:
              await msg.delete()
              await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
-      elif not reply:
+      elif not reply and rank == "Commander":
             try:
                user_id = int(message.text.split("-u")[1].split("-r")[0])
                reason = message.text.split("-r")[1]
