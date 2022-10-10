@@ -2,16 +2,13 @@ import config
 import strings
 import media
 
-from pyrogram import filters
+from pyrogram import *
 from pyrogram.types import *
-from InvadedRobot import bot
-from InvadedRobot.helpers.status import status
-from InvadedRobot.helpers.scandb import (
-get_scan_users, add_scan_user, get_scan_user,
- is_scan_user, remove_scan_user, update_scan_reason, update_scan_proof
-)
+from InvadedRobot import *
+from InvadedRobot.helpers.status import *
+from InvadedRobot.helpers.scandb import *
 
-from InvadedRobot.rank import RANK_USERS
+from InvadedRobot.rank import *
 
 @bot.on_message(filters.command("whois",config.COMMANDS))
 async def whois(_, message):
