@@ -22,20 +22,20 @@ async def rank(_, message):
        try:
            user_id = int(reply.from_user.id)
            if user_id in (await RANK_USERS()):
-              await message.reply_text("`The Following User Is Invaded You Can Demote Him Into Troop or Civilian`",
+              await message.reply_text("`The Following User Is Invader You Can Demote Him Into Troop or Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Demote To Troop", callback_data=f"demote_to_troops:{user_id}"),],[
 InlineKeyboardButton("Demote to Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
 
            elif user_id in (await TROOP_USERS()):
-              await message.reply_text("`The Following User Is Troop You Can Promote Him Into Invaded Or Civilian`",
+              await message.reply_text("`The Following User Is Troop You Can Promote Him Into Invader Or Civilian`",
               reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Promote To Invaded", callback_data=f"promote_to_invaded:{user_id}"),],[
+InlineKeyboardButton("Promote To Invader", callback_data=f"promote_to_invader:{user_id}"),],[
 InlineKeyboardButton("Demote To Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
            else:
-              await message.reply_text("`The Following User Is Civilian You Can Promote Him Into Invaded or Troop`",
+              await message.reply_text("`The Following User Is Civilian You Can Promote Him Into Invader or Troop`",
               reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("Promote To Invaded", callback_data=f"promote_to_invaded:{user_id}"),],[
+InlineKeyboardButton("Promote To Invader", callback_data=f"promote_to_invader:{user_id}"),],[
 InlineKeyboardButton("Promote To Troop", callback_data=f"promote_to_troops:{user_id}")]]))          
        except Exception as e:
           await message.reply_photo(photo=media.ERROR_IMG,caption=e)
@@ -47,20 +47,20 @@ InlineKeyboardButton("Promote To Troop", callback_data=f"promote_to_troops:{user
                  await msg.delete() 
            user_id = int(message.text.split("-u")[1])
            if user_id in (await RANK_USERS()):
-              await message.reply_text("`The Following User Is Invaded You Can Demote Him Into Troop or Civilian`",
+              await message.reply_text("`The Following User Is Invader You Can Demote Him Into Troop or Civilian`",
               reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Demote To Troop", callback_data=f"demote_to_troops:{user_id}"),],[
 InlineKeyboardButton("Demote To Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
 
            elif user_id in (await TROOP_USERS()):
-              await message.reply_text("`the user is Troop you can promote to Invaded or demote to Civilian`",
+              await message.reply_text("`the user is Troop you can promote to Invader or demote to Civilian`",
               reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("promote to Invaded", callback_data=f"promote_to_invaded:{user_id}"),],[
+InlineKeyboardButton("promote to Invader", callback_data=f"promote_to_invader:{user_id}"),],[
 InlineKeyboardButton("demoet to Civilian", callback_data=f"demote_to_civilian:{user_id}")]]))
            else:
-              await message.reply_text("`the user is Civilian you can promote to Invaded or promote to troops`",
+              await message.reply_text("`the user is Civilian you can promote to Invader or promote to troops`",
               reply_markup=InlineKeyboardMarkup([[
-InlineKeyboardButton("promote to Invaded", callback_data=f"promote_to_invaded:{user_id}"),],[
+InlineKeyboardButton("promote to Invader", callback_data=f"promote_to_invader:{user_id}"),],[
 InlineKeyboardButton("promote to Troops", callback_data=f"promote_to_troops:{user_id}")]]))           
        except Exception as e:
           await message.reply_photo(photo=media.ERROR_IMG,caption=e)
@@ -73,7 +73,7 @@ async def demote_to_civilian(_, query):
           return await query.answer("Only work dev users.", show_alert=True)
       elif user_id in (await RANK_USERS()):
            await remove_rank(user_id)
-           await query.message.edit("`Successfully Invaded user Demoted to Civilian!`")
+           await query.message.edit("`Successfully Invader user Demoted to Civilian!`")
       elif user_id in (await TROOP_USERS()):
            await remove_troop(user_id)
            await query.message.edit("`Successfully troop user Demoted to Civilian!`")
@@ -89,7 +89,7 @@ async def demote_to_troops(_, query):
       elif user_id in (await RANK_USERS()):
            await remove_rank(user_id)
            await add_troop(user_id)
-           await query.message.edit("`Successfully Invaded user Demoted to Troops!`")
+           await query.message.edit("`Successfully Invader user Demoted to Troops!`")
    except Exception as e:
        await query.message.reply_photo(media.ERROR_IMG, caption=e)
 
@@ -105,8 +105,8 @@ async def promote_to_troops(_, query):
    except Exception as e:
        await query.message.reply_photo(media.ERROR_IMG, caption=e)
 
-@bot.on_callback_query(filters.regex("promote_to_invaded"))
-async def promote_to_invaded(_, query):
+@bot.on_callback_query(filters.regex("promote_to_invader"))
+async def promote_to_invader(_, query):
    user_id = int(query.data.split(":")[1])
    try:
       if not query.from_user.id in config.DEVS:
@@ -114,9 +114,9 @@ async def promote_to_invaded(_, query):
       elif user_id in (await TROOP_USERS()):
             await remove_troop(user_id)
             await add_rank(user_id)
-            await query.message.edit("`Successfully Troop user Promoted to Invaded`")
+            await query.message.edit("`Successfully Troop user Promoted to Invader`")
       else:
           await add_rank(user_id)
-          await query.message.edit("`Successfully Civilian Promoted to Invaded`")
+          await query.message.edit("`Successfully Civilian Promoted to Invader`")
    except Exception as e:
        await query.message.reply_photo(media.ERROR_IMG, caption=e)
