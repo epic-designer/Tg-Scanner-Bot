@@ -1,5 +1,5 @@
 from InvadedRobot import bot
-form pyrogram import filters 
+from pyrogram import filters 
 from PIL import Image, ImageDraw, ImageFont
 import os
 import random
@@ -10,10 +10,9 @@ from io import BytesIO
 
 @bot.on_message(filters.command("get_id"))
 async def image_maker(_, message) -> None:
-    replied_user = message.reply_to_message
     # Download profile photo
     await bot.download_media(
-        replied_user.photo.file_id, file="user.png", download_big=True
+        message.reply_to_message.photo.file_id, file="user.png", download_big=True
     )
     k = ["https://telegra.ph/file/853962e208ec379284185.jpg", "https://telegra.ph/file/dd9a03db6d6f7cd577ad0.jpg"]
     y = random.choice(k)
@@ -31,11 +30,11 @@ async def image_maker(_, message) -> None:
     # put text in image
     draw.text(
         (1000, 460),
-        replied_user.from_user.first_name.replace("\u2060", ""),
+        message.reply_to_message.from_user.first_name.replace("\u2060", ""),
         fill=color,
         font=font2,
     )
-    draw.text((393, 50), str(replied_user.from_user.id), fill=color, font=font)
+    draw.text((393, 50), str(message.reply_to_message.from_user.id), fill=color, font=font)
     id_template.save("user_id.png")
     await bot.send_file(
         message.chat.id,
