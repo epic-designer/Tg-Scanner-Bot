@@ -16,6 +16,7 @@ async def gitpull(_, message):
 @bot.on_message(filters.user(config.DEVS) & filters.command("restart",config.COMMANDS) & ~filters.forwarded)
 async def restart(_, message):
     k = await message.reply_text("`Restarting...`")
+    await bot.disconnect()
     await inv.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
     sys.exit()
