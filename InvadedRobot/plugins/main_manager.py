@@ -108,20 +108,20 @@ async def approve_scan(_, query):
      scan_user_id = a_s_id
      reason = a_r
      proof = a_p
-     date = date
+     date_time = date
      rank = await status(query.from_user.id)
      scan_user_mention = f"[{scan_user_id}](tg://user?id={scan_user_id})"
      troop_user_mention = f"[{troop_user_id}](tg://user?id={troop_user_id})"
      user_mention = f"[{query.from_user.id}](tg://user?id={query.from_user.id})"
      try:
        if rank == "Civilian":
-          return await query.answer("You don't have enough rights!", show_alert=True)
+           await query.answer("You don't have enough rights!", show_alert=True)
        elif (await is_scan_user(scan_user_id)) == True:
-           return await query.answer("This User Already Scanned!", show_alert=True)
+           await query.answer("This User Already Scanned!", show_alert=True)
        else:
            await add_scan_user(scan_user_id, reason, date)
            await query.message.edit(f"`the scan was approved but you need to add proof manually here the proof link:``{proof}`")
-           await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention, scan_user_mention,user_mention, reason, date))
+           await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention, scan_user_mention,user_mention, reason, date_time))
      except Exception as e:
           await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
         
