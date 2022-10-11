@@ -29,7 +29,7 @@ async def scan(_, message):
             mention = f"[{user_id}](tg://user?id={user_id})"
             if (await is_scan_user(user_id)) == True:
                  await msg.edit("`The Following User Is Already Scanned In System No Need To Request Scan`")
-            else:படையெடுப்பாளர்கள்"
+            else:
                 troop_id = message.from_user.id
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}:{troop_id}"),
