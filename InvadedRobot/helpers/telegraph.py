@@ -7,11 +7,7 @@ async def telegraph(message):
             return await message.reply_text("`you don't have enough rights to do this.`")
         elif not message.reply_to_message:
             return await message.reply_text("`reply to media to upload telegraph note: it file size almost lessen 6mb`")
-        else:
-          if message.reply_to_message.sticker:
-               path = await message.reply_to_message.download(f"{message.reply_to_message.sticker.file_id}.jpg")
-          else:
-               path = await message.reply_to_message.download()
+        path = await message.reply_to_message.download()
         telegraph = upload_file(path)
         for file_id in telegraph:
             url = "https://telegra.ph" + file_id
