@@ -9,7 +9,7 @@ async def telegraph(message):
             return await message.reply_text("`reply to media to upload telegraph note: it file size almost lessen 6mb`")
         else:
           if message.reply_to_message.sticker:
-               path = await message.reply_to_message.download(f"{message.reply_to_message.sticker.file_unique_id}.jpg")
+               path = await message.reply_to_message.download(f"{message.reply_to_message.sticker.file_id}.jpg")
           else:
                path = await message.reply_to_message.download()
         telegraph = upload_file(path)
