@@ -13,13 +13,13 @@ async def telegraph(message):
           else:
                path = await message.reply_to_message.download()
         telegraph = upload_file(path)
-           for file_id in telegraph:
-               url = "https://telegra.ph" + file_id
-           if url.endswith("mp4"):
+        for file_id in telegraph:
+            url = "https://telegra.ph" + file_id
+        if url.endswith("mp4"):
                 return await message.reply_video(video=url,caption=url)
-           elif url.endswith("jpg"):
+        elif url.endswith("jpg"):
                 return await message.reply_photo(photo=url,caption=url)
-           elif url.endswith("gif"):
+        elif url.endswith("gif"):
                 return await message.reply_animation(animation=url,caption=url)
 
 
