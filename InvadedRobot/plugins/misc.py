@@ -10,4 +10,7 @@ async def tm(_, message):
 
 @bot.on_message(filters.command(["formatting","format"],config.COMMANDS))
 async def formatting(_, message):
-    await message.reply_text(strings.FORMAT_TEXT)
+    if message.reply_to_message:
+        await message.reply_to_message.reply_text(strings.FORMAT_TEXT)
+    else:
+       await message.reply_text(strings.FORMAT_TEXT)
