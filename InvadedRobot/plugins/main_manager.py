@@ -34,7 +34,7 @@ async def scan(_, message):
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}:{troop_id}"),
 ],[
-InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
+InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{user_id}:{troop_id}")]]))
                 await msg.delete()
                 req_msg = await message.reply_text("`The Request Successfully Sent To Invaded`")
         except Exception as e:
@@ -55,7 +55,7 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
 InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reason}:{proof}:{troop_id}"),
 ],[
-InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
+InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan:{user_id}:{troop_id}")]]))
                 await msg.delete()
                 req_msg = await message.reply_text("`The Request Successfully Sent To Invaded`")
         except Exception as e:
@@ -116,6 +116,23 @@ async def approve_scan(_, query):
            await query.message.edit(f"`The Scan Was Successfully Approved But You Need To Add Proof Manually Here Is The Proof Link:``{proof}`")
            await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention,scan_user_mention,approved_user_mention,reason,date))
            await req_msg.edit("`Your Request Is Successfully Approved By Commander`")
+     except Exception as e:
+          await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
+
+@bot.on_callback_query(filters.regex("disapprove_scan"))
+async def disapprove_scan(_, query):
+     scan_user_id = int(query.data.split(":")[1])
+     troop_user_id = query.data.split(":")[2]
+     rank = await status(query.from_user.id)
+     try:
+       if rank == "Civilian" or rank == "Troop":
+            return await query.answer("You Don't Have Enough Rights!", show_alert=True)
+       elif (await is_scan_user(scan_user_id)) == True:
+            return await query.answer("This User Already Scanned!", show_alert=True)
+       else:
+           await query.message.edit("`The Scan Was Successfully Disapproved`")
+           await bot.send_message(troop_user_id, text=strings.SCAN_DISAPPROVED.format(scan_user_id))
+           await req_msg.edit("`Your Request Is Successfully Disapproved By Commander Try Scanning Again With Proper Proof And Reason`")
      except Exception as e:
           await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
  
