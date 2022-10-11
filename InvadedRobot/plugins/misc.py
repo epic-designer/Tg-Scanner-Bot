@@ -4,7 +4,7 @@ from pyrogram import filters
 from InvadedRobot import bot
 from InvadedRobot.helpers.telegraph import telegraph
 
-@bot.on_message(filters.command("tm",config.COMMANDS))
+@bot.on_message(filters.command(["tm","tgm,"telegraph"],config.COMMANDS))
 async def tm(_, message):
        await telegraph(message)
 
