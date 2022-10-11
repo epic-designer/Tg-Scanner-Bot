@@ -131,8 +131,7 @@ async def disapprove_scan(_, query):
             return await query.answer("This User Already Scanned!", show_alert=True)
        else:
            await query.message.edit("`The Scan Was Successfully Disapproved`")
-           await bot.send_message(troop_user_id, text=strings.SCAN_DISAPPROVED.format(scan_user_id))
-           await req_msg.edit("`Your Request Is Successfully Disapproved By Commander Try Scanning Again With Proper Proof And Reason`")
+           await req_msg.edit("`Your Request Is Disapproved By Commander Try Scanning Again With Proper Proof And Reason`")
      except Exception as e:
           await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
  
