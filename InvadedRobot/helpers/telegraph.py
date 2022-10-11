@@ -1,8 +1,11 @@
 from telegraph import upload_file
-
+from InvadedRobot.helpers.status import status
 
 async def telegraph(message):
-        if not message.reply_to_message or not message.reply_to_message.media:
+        rank = await status(message.from_user.id)
+        if rank == "Civilian":
+            return await message.reply_text("`you don't have enough rights to do this.`")
+        elif not message.reply_to_message or not message.reply_to_message.media:
             return await message.reply_text("`reply to photo or document to upload telegraph note: it file size almost lessen 6mb`")
         else:
            path = await message.reply_to_message.download()
