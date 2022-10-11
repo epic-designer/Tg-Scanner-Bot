@@ -10,7 +10,6 @@ from InvadedRobot.helpers.status import *
 
 from InvadedRobot.rank import *
 
-
 @bot.on_message(filters.command("scan",config.COMMANDS))
 async def scan(_, message):
       global date, req_msg
@@ -29,7 +28,7 @@ async def scan(_, message):
             proof = message.text.split("-p")[1]
             mention = f"[{user_id}](tg://user?id={user_id})"
             if (await is_scan_user(user_id)) == True:
-                 await msg.edit("`The user already scanned in Invaded no need request.`")
+                 await msg.edit("`The Following User Is Already Scanned In System No Need To Request Scan`")
             else:
                 troop_id = message.from_user.id
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
@@ -37,7 +36,7 @@ InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reas
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                 await msg.delete()
-                req_msg = await message.reply_text("the user Successfully requested to Invaded")
+                req_msg = await message.reply_text("`The Request Successfully Sent To Invaded`")
         except Exception as e:
             await msg.delete()
             await message.reply_photo(media.ERROR_IMG, caption=e)
@@ -50,7 +49,7 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
             mention = f"[{user_id}](tg://user?id={user_id})"
             uid = message.from_user.id
             if (await is_scan_user(user_id)) == True:
-                 await msg.edit("`The user already scanned in Invaded no need request.`")
+                 await msg.edit("`The Following User Is Already Scanned In System No Need To Request Scan`")
             else:
                 troop_id = message.from_user.id
                 await bot.send_message(config.REPORT_GROUP, text=strings.REQUEST_SCAN.format(message.from_user.mention, mention, reason, proof, date),reply_markup=InlineKeyboardMarkup([[
@@ -58,7 +57,7 @@ InlineKeyboardButton("Approve Scan",callback_data=f"approve_scan:{user_id}:{reas
 ],[
 InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                 await msg.delete()
-                req_msg = await message.reply_text("the user Successfully requested to Invaded")
+                req_msg = await message.reply_text("`The Request Successfully Sent To Invaded`")
         except Exception as e:
             await msg.delete()
             await message.reply_photo(media.ERROR_IMG, caption=e)
@@ -97,24 +96,16 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove_scan")]]))
                   await msg.delete()
                   await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
 
-
-
-
-
-
 @bot.on_callback_query(filters.regex("approve_scan"))
 async def approve_scan(_, query):
-
      scan_user_id = int(query.data.split(":")[1])
      reason = query.data.split(":")[2]
      proof = query.data.split(":")[3]
      troop_user_id = query.data.split(":")[4]
-     
      rank = await status(query.from_user.id)
      scan_user_mention = f"[{scan_user_id}](tg://user?id={scan_user_id})"
      troop_user_mention = f"[{troop_user_id}](tg://user?id={troop_user_id})"
      approved_user_mention = f"[{query.from_user.id}](tg://user?id={query.from_user.id})"
-
      try:
        if rank == "Civilian" or rank == "Troop":
             return await query.answer("You don't have enough rights!", show_alert=True)
@@ -122,16 +113,12 @@ async def approve_scan(_, query):
             return await query.answer("This User Already Scanned!", show_alert=True)
        else:
            await add_scan_user(scan_user_id, reason, date)
-           await query.message.edit(f"`the scan was approved but you need to add proof manually here the proof link:``{proof}`")
+           await query.message.edit(f"`The Scan Was Successfully Approved But You Need To Add Proof Manually Here Is The Proof Link:``{proof}`")
            await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention,scan_user_mention,approved_user_mention,reason,date))
-           await req_msg.edit("`Your request is Successfully Accepted.`")
+           await req_msg.edit("`Your Request Is Successfully Approved By Commander`")
      except Exception as e:
           await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
-       
-
-
-
-
+ 
 @bot.on_message(filters.command("revert",config.COMMANDS))
 async def revert(_, message):
       reply = message.reply_to_message
