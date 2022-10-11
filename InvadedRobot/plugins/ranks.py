@@ -115,7 +115,7 @@ async def promote_to_commander(_, query):
    try:
       if not query.from_user.id in config.DEVS:
           return await query.answer("Only For Invaders", show_alert=True)
-     elif user_id in (await TROOP_USERS()):
+      elif user_id in (await TROOP_USERS()):
             await remove_troop(user_id)
             await add_rank(user_id)
             await query.message.edit_caption("`Successfully Promoted Troop Into Commander`")
