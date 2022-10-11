@@ -108,7 +108,7 @@ async def approve_scan(_, query):
      approved_user_mention = f"[{query.from_user.id}](tg://user?id={query.from_user.id})"
      try:
        if rank == "Civilian" or rank == "Troop":
-            return await query.answer("You don't have enough rights!", show_alert=True)
+            return await query.answer("You Don't Have Enough Rights!", show_alert=True)
        elif (await is_scan_user(scan_user_id)) == True:
             return await query.answer("This User Already Scanned!", show_alert=True)
        else:
