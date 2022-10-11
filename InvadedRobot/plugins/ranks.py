@@ -71,6 +71,8 @@ async def demote_to_civilian(_, query):
    try:
       if not query.from_user.id in config.DEVS:
           return await query.answer("Only For Invaders", show_alert=True)
+      elif user_id in config.DEVS:
+          return await query.answer("I Can't Demote My Developers")
       elif user_id in (await RANK_USERS()):
            await remove_rank(user_id)
            await query.message.edit_caption("`Successfully Demoted Commander User Into Civilian!`")
@@ -86,6 +88,8 @@ async def demote_to_troop(_, query):
    try:
       if not query.from_user.id in config.DEVS:
           return await query.answer("Only For Invaders", show_alert=True)
+      elif user_id in config.DEVS:
+          return await query.answer("I Can't Demote My Developers")
       elif user_id in (await RANK_USERS()):
            await remove_rank(user_id)
            await add_troop(user_id)
@@ -97,6 +101,8 @@ async def demote_to_troop(_, query):
 async def promote_to_troop(_, query):
    user_id = int(query.data.split(":")[1])
    try:
+      if user_id in config.DEVS:
+          return await query.answer("I Can't Demote My Developers")
       if not query.from_user.id in config.DEVS:
           return await query.answer("Only For Invaders", show_alert=True)
       else:
@@ -111,6 +117,8 @@ async def promote_to_commander(_, query):
    try:
       if not query.from_user.id in config.DEVS:
           return await query.answer("Only For Invaders", show_alert=True)
+      elif user_id in config.DEVS:
+          return await query.answer("I Can't Demote My Developers")
       elif user_id in (await TROOP_USERS()):
             await remove_troop(user_id)
             await add_rank(user_id)
