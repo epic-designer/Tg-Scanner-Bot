@@ -19,6 +19,16 @@ SCAN_APPROVED = """
 : : **Scan Processed Time And Date**: `{}`
 """
 
+SCAN_DISAPPROVED = """
+**$REJECTED**
+**Crime Coefficient:** `Under 100`
+`Not A Target For Enforcement Action`
+`The Trigger Will Be Locked`
+
+**Note:- The Scan Disapproved Due To Not Proper Reason, Proof etc**
+**:: Try Scanning Again With Proper Reason And Proof**
+"""
+
 REQUEST_SCAN = """
 **$SCAN**
 `{}` **Is Requesting a Cymatic Scan For** {}
