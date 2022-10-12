@@ -14,7 +14,7 @@ from pyrogram import filters
 
 @bot.on_message(filters.command("stats",config.COMMANDS))
 async def stats(_, message):
-   rank = status(message.from_user.id)
+   rank = await status(message.from_user.id)
    if rank == "Civilian":
        return await message.reply("`You Don't have Enough right to Use.`")
    else:
