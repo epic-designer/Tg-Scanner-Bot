@@ -1,3 +1,6 @@
+import config
+import strings
+
 from InvadedRobot.rank import (
   RANK_USERS, TROOP_USERS)
 
@@ -7,7 +10,9 @@ from InvadedRobot.helpers.status import status
 from InvadedRobot import bot
 
 
-@bot.on_message(filters.command("stats"))
+from pyrogram import filters
+
+@bot.on_message(filters.command("stats",config.COMMANDS))
 async def stats(_, message):
    rank = status(message.from_user.id)
    if rank == "Civilian":
