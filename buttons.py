@@ -1,6 +1,6 @@
 from pyrogram.types import *
 
-HELP_MENU_1 = InlineKeyboardMarkup([[InlineKeyboardButton("RANK USER",callback_data="rankusers")
+HELP_MENU_1 = InlineKeyboardMarkup([[InlineKeyboardButton("Rank Users",callback_data="rankusers")
 ],[InlineKeyboardButton("How Can I Report",callback_data="how_i_report"),
 ],[InlineKeyboardButton("How I Revert",callback_data="how_i_revert"),
 ],[
