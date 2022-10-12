@@ -10,7 +10,7 @@ from InvadedRobot.helpers.status import *
 
 from InvadedRobot.rank import *
 
-X = RANK_USERS() + config.DEVS + await TROOP_USERS()
+X = RANK_USERS() + config.DEVS + TROOP_USERS()
 
 @bot.on_message(filters.command("scan",config.COMMANDS))
 async def scan(_, message):
