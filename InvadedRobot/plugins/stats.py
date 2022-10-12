@@ -30,7 +30,7 @@ async def scanlist(_, message):
        return await message.reply("`You Don't have Enough right to Use.`")
    else:
        try:
-          text = "here the scan user ids:\n"
+          text = "**here the scan user ids**:\n"
           for scan_ids in (await get_scan_users()):
              text += f"• `{scan_ids}`\n"
           return await message.reply(text)
