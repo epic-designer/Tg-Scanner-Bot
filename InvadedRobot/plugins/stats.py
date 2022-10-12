@@ -29,9 +29,9 @@ async def scanlist(_, message):
    if rank == "Civilian":
        return await message.reply("`You Don't have Enough right to Use.`")
    else:
-       text = "here the scan user ids:"
+       text = "here the scan user ids:\n"
        for scan_ids in (await get_scan_users()):
-            text += "• `{scan_ids}`"
+            text += f"• `{scan_ids}`\n"
        return await message.reply(text)
 
 
