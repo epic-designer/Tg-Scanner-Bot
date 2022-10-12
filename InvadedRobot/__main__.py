@@ -10,11 +10,13 @@ from InvadedRobot.helpers.scandb import *
 from pyrogram import *
 from pyrogram.types import *
 
+
+ 
 BUTTON = InlineKeyboardMarkup([[
-InlineKeyboardButton("🔔",url=config.UPDATE_CHANNEL_URL),
+InlineKeyboardButton("📬",url=config.SYSTEM_CHANNEL_URLUPDATE_CHANNEL_URL),
 InlineKeyboardButton("🔊",url=config.LOG_CHANNEL_URL),
-InlineKeyboardButton("📊",url=config.SYSTEM_CHANNEL_URL),],[
-InlineKeyboardButton("🆘",callback_data="help_1"),]])
+InlineKeyboardButton("➕",url=f"t.me/{config.USERNAME}?startgroup=true"),],[
+InlineKeyboardButton("🆘 COMMANDS!",callback_data="help"),]])
 
 @bot.on_message(filters.command("start"))
 async def start(_, message):
@@ -60,7 +62,7 @@ async def start(_, message):
          await inv.join_chat(link)
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
          
-@bot.on_callback_query(filters.regex("help_1"))
+@bot.on_callback_query(filters.regex("help"))
 async def help_1(_, query):
     if query.message.media:
          msg = await query.message.edit_caption("`Opening Help Menu...`")
@@ -71,24 +73,7 @@ async def help_1(_, query):
          await asyncio.sleep(2)
          await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_1)
 
-@bot.on_callback_query(filters.regex("help_2"))
-async def help_2(_, query):
-    if query.message.media:
-         msg = await query.message.edit_caption("`Opening Help Menu...`")
-         await asyncio.sleep(2)
-         await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_2)
-    else:
-         msg = await query.message.edit("`Opening Help Menu...`")
-         await asyncio.sleep(2)
-         await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_2)
 
-@bot.on_callback_query(filters.regex("close_menu"))
-async def clode_menu(_, query):
-    if query.message.media:
-         await query.message.edit_caption(f"`Help Menu Was Closed By {query.from_user.first_name}`")
-    else:
-         await query.message.edit(f"`Help Menu Was Closed By {query.from_user.first_name}`")
-         
 if __name__ == "__main__":
      bot.run()
      with bot:
