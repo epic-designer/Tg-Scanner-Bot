@@ -22,3 +22,17 @@ async def stats(_, message):
        total_troop = len(await TROOP_USERS())
        total_commander = len(await RANK_USERS())
        return await message.reply(strings.STATS.format(total_troop,total_commander,total_scans))
+
+@bot.on_message(filters.command("scanlist",config.COMMANDS))
+async def scanlist(_, message):
+   rank = await status(message.from_user.id)
+   if rank == "Civilian":
+       return await message.reply("`You Don't have Enough right to Use.`")
+   else:
+       text = "here the scan user ids:"
+       for scan_ids in (await get_scan_users()):
+            text += "• `{scan_ids}`"
+       return await message.reply(text)
+
+
+
