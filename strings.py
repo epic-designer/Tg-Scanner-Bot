@@ -8,6 +8,25 @@ SCAN_TEXT = """
 : : **Scan Processed Time And Date**: `{}`
 """
 
+HELP = """
+Here the Help Menu:
+**rankusers commands**:
+!telegraph
+!scan
+!revert
+!proof
+!stats
+!whois
+
+**Invader commands**:
+!rank
+!eval
+!sh
+
+!format - to use correct formatting method.
+"""
+
+
 SCAN_APPROVED = """
 **#LethalEliminator**
 **• Troop** : **{}**
