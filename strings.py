@@ -38,6 +38,20 @@ REQUEST_SCAN = """
 : : **Scan Processed Time And Date**: `{}`
 """
 
+
+#aasf update this da
+
+STATS = """
+here the stats:
+
+troops: `{}`
+commanders: `{}`
+
+scanned users: `{}`
+
+By **Invaded**
+"""
+
 CHECK_TEXT = """
 **Details Of Following User:-**
 • **User Id**: `{}`
