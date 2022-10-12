@@ -18,7 +18,7 @@ async def edit_or_reply(message, **kwargs):
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
 @bot.on_message(
-    filters.command(["sh", "shell", "term", "terminal"]
+    filters.command(["sh", "shell", "term", "terminal"],
     config.COMMANDS),
     & filters.user(config.DEVS)
     & ~filters.forwarded
