@@ -86,3 +86,9 @@ async def getproof(_, query):
            await query.message.edit_reply_markup(reply_markup=None)
         except:
            await query.message.edit_caption("`Sorry Our Commander Scanned Or Approved A Scan Without Adding Proof!`")
+
+help_text = """
+**Here Is The Help For** `Whois`:-
+➛ `whois` - Get Data Of The User
+"""
+__plugin_name__ = "whois"
