@@ -2,7 +2,7 @@ from InvadedRobot.rank import (
   RANK_USERS, TROOP_USERS)
 
 
-from InvadedRobot.helpers.scansdb import get_scan_users
+from InvadedRobot.helpers.scandb import get_scan_users
 from InvadedRobot.helpers.status import status
 from InvadedRobot import bot
 
