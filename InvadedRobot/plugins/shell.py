@@ -2,7 +2,7 @@ import os, re sys, config, traceback, subprocess
 
 from inspect import getfullargspec
 from pyrogram import filters
-from InvadedRobot import bot, parse_com
+from InvadedRobot import bot
 
 def parse_com(com, key):
   try:
