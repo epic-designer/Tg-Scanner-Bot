@@ -10,7 +10,7 @@ from InvadedRobot.helpers.scandb import *
 
 from InvadedRobot.rank import *
 
-@bot.on_message(filters.command("whois",config.COMMANDS))
+@bot.on_message(filters.command(["whois", "info", "data"],config.COMMANDS))
 async def whois(_, message):
        reply = message.reply_to_message
        msg = await message.reply_text("`Checking Database...`")
