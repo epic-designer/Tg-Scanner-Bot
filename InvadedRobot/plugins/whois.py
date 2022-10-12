@@ -89,6 +89,6 @@ async def getproof(_, query):
 
 help_text = """
 **Here Is The Help For** `Whois`:-
-➛ `whois` `info` `data` - Get Data Of The User
+➛ `whois`, `info`, `data` - **Get Data Of The User**
 """
 __plugin_name__ = "whois"
