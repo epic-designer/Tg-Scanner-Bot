@@ -29,10 +29,14 @@ async def scanlist(_, message):
    if rank == "Civilian":
        return await message.reply("`You Don't have Enough right to Use.`")
    else:
-       text = "here the scan user ids:\n"
-       for scan_ids in (await get_scan_users()):
-            text += f"• `{scan_ids}`\n"
-       return await message.reply(text)
-
+       try:
+          text = "here the scan user ids:\n"
+          for scan_ids in (await get_scan_users()):
+             text += f"• `{scan_ids}`\n"
+          return await message.reply(text)
+       except MESSAGE_TOO_LONG:
+           with io.BytesIO(str.encode(text)) as file:
+              file.name = "scanlist.txt"
+              await message.reply_document(document=file,caption="`here the scan user ids.`")
 
 
