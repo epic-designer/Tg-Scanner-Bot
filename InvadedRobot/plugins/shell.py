@@ -24,7 +24,7 @@ async def edit_or_reply(message, **kwargs):
     & ~filters.forwarded
     & ~filters.via_bot
 )
-async def shellrunner(client, message):
+async def shellrunner(_, message):
     if len(message.command) < 2:
         return await edit_or_reply(
             message, text="**Usage:**\n`/sh git pull`"
@@ -79,7 +79,7 @@ async def shellrunner(client, message):
         if len(output) > 4096:
             with open("output.txt", "w+") as file:
                 file.write(output)
-            await client.send_document(
+            await bot.send_document(
                 message.chat.id,
                 "output.txt",
                 reply_to_message_id=message.message_id,
