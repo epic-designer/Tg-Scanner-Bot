@@ -14,7 +14,7 @@ async def telegraph(message):
         for file_id in telegraph:
             url = "https://telegra.ph" + file_id
             end = datetime.now()
-        ms = (end - start).microseconds
+        ms = (end - start).seconds
         caption = f"**dl speed**: `{ms}`\n\n{url}"
         if url.endswith("mp4"):
                 return await message.reply_video(video=url,caption=caption)
