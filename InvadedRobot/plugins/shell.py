@@ -1,4 +1,4 @@
-import os, re, sys, config, traceback, subprocess
+E3 import os, re, sys, config, traceback, subprocess
 
 from inspect import getfullargspec
 from pyrogram import filters
@@ -29,7 +29,7 @@ async def shellrunner(_, message):
         return await edit_or_reply(
             message, text="**Usage:**\n`/sh git pull`"
         )
-    text = parse_com(message.text, "sh")
+    text = message.text.replace(message.text.split(" ")[0], "")
     if "\n" in text:
         code = text.split("\n")
         output = ""
