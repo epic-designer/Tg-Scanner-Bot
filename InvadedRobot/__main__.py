@@ -13,8 +13,8 @@ from pyrogram.types import *
 
  
 BUTTON = InlineKeyboardMarkup([[
-InlineKeyboardButton("📬",url=config.SYSTEM_CHANNEL_URLUPDATE_CHANNEL_URL),
-InlineKeyboardButton("🔊",url=config.LOG_CHANNEL_URL),
+InlineKeyboardButton("📬",url=config.SYSTEM_CHANNEL_URL),
+InlineKeyboardButton("🔊",url=config.GROUP_URL),
 InlineKeyboardButton("➕",url=f"t.me/{config.USERNAME}?startgroup=true"),],[
 InlineKeyboardButton("🆘 COMMANDS!",callback_data="help"),]])
 
