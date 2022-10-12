@@ -9,3 +9,9 @@ from InvadedRobot.helpers.telegraph import telegraph
 @bot.on_message(filters.command(["tm","tgm","telegraph"],config.COMMANDS))
 async def tm(_, message):
        await telegraph(message)
+
+help_text = """
+**Here Is The Help For** `Telegraph`:-
+➛ `tm` `tgm` `telegraph` - Convert Media Into Telegraph Link
+"""
+__plugin_name__ = "telegraph"
