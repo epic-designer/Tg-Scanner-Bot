@@ -10,6 +10,8 @@ from InvadedRobot.helpers.status import *
 
 from InvadedRobot.rank import *
 
+X = (await RANK_USERS()) + config.DEVS + (await TROOP_USERS())
+
 @bot.on_message(filters.command("scan",config.COMMANDS))
 async def scan(_, message):
       global date, req_msg
@@ -27,6 +29,8 @@ async def scan(_, message):
             reason = message.text.split("-r")[1].split("-p")[0]
             proof = message.text.split("-p")[1]
             mention = f"[{user_id}](tg://user?id={user_id})"
+            if user_id in X:
+                 await msg.edit("`The Following User Is Working In Our System Can't Be Scanned`")
             if (await is_scan_user(user_id)) == True:
                  await msg.edit("`The Following User Is Already Scanned In System No Need To Request Scan`")
             else:
@@ -48,6 +52,8 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove:{user_id}:{tro
             proof = message.text.split("-p")[1]
             mention = f"[{user_id}](tg://user?id={user_id})"
             uid = message.from_user.id
+            if user_id in X:
+                 await msg.edit("`The Following User Is Working In Our System Can't Be Scanned`")
             if (await is_scan_user(user_id)) == True:
                  await msg.edit("`The Following User Is Already Scanned In System No Need To Request Scan`")
             else:
@@ -67,6 +73,8 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove:{user_id}:{tro
             reason = message.text.split("-r")[1]
             mention = f"[{user_id}](tg://user?id={user_id})"
             msg = await message.reply_text("`Scanning...`")
+            if user_id in X:
+                  await msg.edit("`The Following User Is Working In Our System Can't Be Scanned`")
             if (await is_scan_user(user_id)) == True:
                   await update_scan_reason(user_id,reason)
                   await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(message.from_user.id,mention,reason,date))
@@ -84,6 +92,8 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove:{user_id}:{tro
                reason = message.text.split("-r")[1]
                mention = f"[{user_id}](tg://user?id={user_id})"
                msg = await message.reply_text("`Scanning...`")
+               if user_id in X:
+                  await msg.edit("`The Following User Is Working In Our System Can't Be Scanned`")
                if (await is_scan_user(user_id)) == True:
                   await update_scan_reason(user_id,reason)
                   await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(message.from_user.id,mention,reason,date))
