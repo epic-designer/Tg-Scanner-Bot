@@ -63,15 +63,15 @@ async def start(_, message):
          await message.reply_photo(photo=(media.ERROR_IMG), caption=f"`{e}`")
          
 @bot.on_callback_query(filters.regex("help"))
-async def help_1(_, query):
+async def help(_, query):
     if query.message.media:
          msg = await query.message.edit_caption("`Opening Help Menu...`")
          await asyncio.sleep(2)
-         await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_1)
+         await msg.edit(strings.HELP)
     else:
          msg = await query.message.edit("`Opening Help Menu...`")
          await asyncio.sleep(2)
-         await msg.edit("**Here Is My Help Menu:-**",reply_markup=buttons.HELP_MENU_1)
+         await msg.edit(strings.HELP)
 
 
 if __name__ == "__main__":
