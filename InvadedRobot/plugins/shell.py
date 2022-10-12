@@ -19,7 +19,7 @@ async def edit_or_reply(message, **kwargs):
 
 @bot.on_message(
     filters.command(["sh", "shell", "term", "terminal"],
-    config.COMMANDS),
+    config.COMMANDS)
     & filters.user(config.DEVS)
     & ~filters.forwarded
     & ~filters.via_bot
