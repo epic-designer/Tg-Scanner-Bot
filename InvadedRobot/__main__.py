@@ -67,11 +67,11 @@ async def help(_, query):
     if query.message.media:
          msg = await query.message.edit_caption("`Opening Help Menu...`")
          await asyncio.sleep(2)
-         await msg.edit(strings.HELP)
+         await msg.edit(HELP)
     else:
          msg = await query.message.edit("`Opening Help Menu...`")
          await asyncio.sleep(2)
-         await msg.edit(strings.HELP)
+         await msg.edit(HELP)
 
 
 if __name__ == "__main__":
