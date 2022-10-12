@@ -65,9 +65,9 @@ async def shellrunner(_, message):
             print(err)
             exc_type, exc_obj, exc_tb = sys.exc_info()
             errors = traceback.format_exception(
-                exc=exc_type,
-                value=exc_obj,
-                tb=exc_tb,
+                exc_type,
+                exc_obj,
+                exc_tb,
             )
             return await edit_or_reply(
                 message, text=f"**ERROR:**\n```{''.join(errors)}```"
