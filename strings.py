@@ -10,20 +10,21 @@ SCAN_TEXT = """
 
 HELP = """
 Here the Help Menu:
+
 **rankusers commands**:
-!telegraph
-!scan
-!revert
-!proof
-!stats
-!whois
+`!telegraph`
+`!scan`
+`!revert`
+`!proof`
+`!stats`
+`!whois`
 
 **Invader commands**:
-!rank
-!eval
-!sh
+`!rank`
+`!eval`
+`!sh`
 
-!format - to use correct formatting method.
+`!format` - to use correct formatting method.
 """
 
 
