@@ -1,3 +1,6 @@
+
+import strings
+
 from pyrogram import filters
 from pyrogram.types import *
 
