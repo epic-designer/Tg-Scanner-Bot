@@ -21,7 +21,7 @@ async def stats(_, message):
        total_scans = len(await get_scan_users())
        total_troop = len(await TROOP_USERS())
        total_commander = len(await RANK_USERS())
-       return await message.reply(strings.STATS.format(total_troop,total_commander,total_scans))
+       return await message.reply_photo("https://telegra.ph/file/4a5a85404c2d4385daffa.jpg", caption=strings.STATS.format(total_troop,total_commander,total_scans))
 
 @bot.on_message(filters.command("scanlist",config.COMMANDS))
 async def scanlist(_, message):
