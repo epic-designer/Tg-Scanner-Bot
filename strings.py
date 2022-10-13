@@ -73,10 +73,10 @@ STATS = """
 
 CHECK_TEXT = """
 **Details Of Following User:-**
-• **User Id**: `{}`
-• **Reason**: `{}`
+➛ **User Id**: `{}`
+➛ **Reason**: `{}`
 
-× **Scan Processed Time And Date**: `{}`
+: : **Scan Processed Time And Date**: `{}`
 """
 
 PM_START_TEXT = """
@@ -105,30 +105,30 @@ FORMAT_TEXT = """
 **• Scan Formatting Example:**
 
 **If You're Replying Someone To Scan:-**
-- `/scan -r scammer` `(Reply To A User)`
+➛ `/scan -r scammer` `(Reply To A User)`
 
 **Else If You're Using Id To Scan Someone:-**
-- `/scan -u 123456789 -r scammer` `(No Need To Reply To A User)`
+➛ `/scan -u 123456789 -r scammer` `(No Need To Reply To A User)`
 
 **• Revert Formatting Example:**
 
 **If You're Reverting Someone's Scan:-**
-- `/revert` `(Reply To A User)`
+➛ `/revert` `(Reply To A User)`
 
 **Else If You're Using Id To Revert Someone's Scan:-**
-- `/revert -u 123456789` `(No Need To Reply To A User)`
+➛ `/revert -u 123456789` `(No Need To Reply To A User)`
 
 **• Adding Proof Formatting Example:**
 
-- `/proof -u 123456789` `(Reply To A Media Ex:- (Photo, Document, Video (Under 6Mb)))`
+➛ `/proof -u 123456789` `(Reply To A Media Ex:- (Photo, Document, Video (Under 6Mb)))`
 
 **• Whois Formatting Example:**
 
 **If You're Replying Someone To Get Info About Them:-**
-- `/whois` `(Reply To A User)`
+➛ `/whois` `(Reply To A User)`
 
 **Else If You're Using Id To Get Info About Someone:-**
-- `/whois -u 123456789` `(No Need To Reply To A User)`
+➛ `/whois -u 123456789` `(No Need To Reply To A User)`
 
 `: : Powered By Invaders`
 """
