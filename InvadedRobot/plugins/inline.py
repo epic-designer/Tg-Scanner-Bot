@@ -12,5 +12,5 @@ async def help(_, query):
     query.id,
     results=[
         InlineQueryResultArticle(
-            "Here the helps!",
+            "Here the Is The Help!",
             InputTextMessageContent(strings.HELP))])
