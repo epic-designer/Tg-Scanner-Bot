@@ -32,8 +32,8 @@ async def scanlist(_, message):
        try:
           text = "**Here Is The List Of Scanned User Ids**:\n"
           for scan_ids in (await get_scan_users()):
-             text += f"• `{scan_ids}`\n"
-          return await message.reply(text)
+             text += f"➛ `{scan_ids}`\n"
+          return await message.reply_photo("https://telegra.ph/file/0d8b5b7cbcc4de9fddd70.jpg", caption=text)
        except MESSAGE_TOO_LONG:
            with io.BytesIO(str.encode(text)) as file:
               file.name = "scanlist.txt"
