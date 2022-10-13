@@ -17,10 +17,11 @@ async def gitpull(_, message):
 @bot.on_message(filters.user(config.DEVS) & filters.command("restart",config.COMMANDS) & ~filters.forwarded)
 async def restart(_, message):
     k = await message.reply_photo("https://telegra.ph/file/e9921cfaf2d082eee7407.jpg", caption="`Restarting...`")
-    await bot.restart()
-    await inv.restart()
-    os.execl(sys.executable, sys.executable, *sys.argv)
-    sys.exit()
+    await bot.stop()
+    await inv.stop()
+    await asyncio.sleep(2)
+    await inv.run()
+    await bot.run()
     await k.edit_caption("`Restarted Successfully!!!`")
 
 @bot.on_message(filters.user(config.DEVS) & filters.command("shutdown",config.COMMANDS) & ~filters.forwarded)
@@ -28,5 +29,5 @@ async def shutdown(event):
     k = await message.reply_photo("https://telegra.ph/file/180353501a3a40c052010.jpg", caption="`Shutting Down...`")
     await asyncio.sleep(2)
     await k.edit_caption("`Shut Downed Successfully`")
-    await bot.disconnect()
-    await inv.disconnect()
+    await bot.stop()
+    await inv.stop()
