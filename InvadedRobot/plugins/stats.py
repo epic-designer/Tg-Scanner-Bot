@@ -16,7 +16,7 @@ from pyrogram import filters
 async def stats(_, message):
    rank = await status(message.from_user.id)
    if rank == "Civilian":
-       return await message.reply("`You Don't have Enough right to Use.`")
+       return
    else:
        total_scans = len(await get_scan_users())
        total_troop = len(await TROOP_USERS())
