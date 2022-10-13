@@ -3,11 +3,11 @@ from pyrogram.types import *
 
 from InvadedRobot import bot
 
-@bot.on_inline_query(filters.regex("ok"))
-async def ok(_, query):
+@bot.on_inline_query(filters.regex("help"))
+async def help(_, query):
     await bot.answer_inline_query(
     query.id,
     results=[
         InlineQueryResultArticle(
-            "Ok",
-            InputTextMessageContent("Message content"))])
+            "Here the helps!",
+            InputTextMessageContent(strings.HELP))])
