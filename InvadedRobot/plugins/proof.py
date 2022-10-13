@@ -24,7 +24,8 @@ async def proof(_, message):
                  return await msg.edit("`This User Is Not Scanned The User Must To Been Scanned To Add Proof...`")
 
              await update_scan_proof(user_id, message)
-             await msg.edit("`Successfully Added Proof!`")   
+             await msg.delete()
+             await message.reply_photo("https://telegra.ph/file/fcbfba0b8d16e084b819f.jpg", caption="`Successfully Added Proof!`")   
           except Exception as e:
               await msg.delete()
               await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
