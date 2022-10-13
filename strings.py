@@ -1,17 +1,17 @@
 SCAN_TEXT = """
 **#LethalEliminator**
-**• Commander** : `{}`
-**• Target User** : {}
-**• Reason** : `{}`
-**• Crime Coefficient** : `Over 300`
+**➛ Commander** : `{}`
+**➛ Target User** : {}
+**➛ Reason** : `{}`
+**➛ Crime Coefficient** : `Over 300`
 
 : : **Scan Processed Time And Date**: `{}`
 """
 
 HELP = """
-Here the Help Menu:
+**Here Is The Help Menu Of Invaded**:-
 
-**rankusers commands**:
+**➛ Rankusers Commands**:
 `!telegraph`
 `!scan`
 `!revert`
@@ -19,22 +19,22 @@ Here the Help Menu:
 `!stats`
 `!whois`
 
-**Invader commands**:
+**➛ Invaders Commands**:
 `!rank`
 `!eval`
 `!sh`
 
-`!format` - to use correct formatting method.
+`!format` - **To Get Correct Formatting Methods**
 """
 
 
 SCAN_APPROVED = """
 **#LethalEliminator**
-**• Troop** : **{}**
-**• Target User** : **{}**
-**• Approved By** : **{}**
-**• Reason** : `{}`
-**• Crime Coefficient** : `Over 300`
+**➛ Troop** : **{}**
+**➛ Target User** : **{}**
+**➛ Approved By** : **{}**
+**➛ Reason** : `{}`
+**➛ Crime Coefficient** : `Over 300`
 
 : : **Scan Processed Time And Date**: `{}`
 """
@@ -62,14 +62,13 @@ REQUEST_SCAN = """
 #aasf update this da
 
 STATS = """
-here the stats:
+**Here The Stats Of Invaded:-**
 
-troops: `{}`
-commanders: `{}`
+➛ `{}` **Troops**
+➛ `{}` **Commanders**
+➛ `{}` **Scanned Users**
 
-scanned users: `{}`
-
-By **Invaded**
+**: : By @InvadedRobot**
 """
 
 CHECK_TEXT = """
