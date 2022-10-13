@@ -17,7 +17,7 @@ async def scan(_, message):
       date = message.date
       rank = await status(message.from_user.id)
       if rank == "Civilian":
-          return await message.reply_text("`You Don't Have Enough Rights To Scan...`")
+          return 
       elif len(message.command) <2:
           return await message.reply_text("`Get Format For Scan By Sending` `/formatting`")
       elif reply and rank == "Troop":
