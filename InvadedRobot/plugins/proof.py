@@ -12,7 +12,7 @@ async def proof(_, message):
       date = message.date
       msg = await message.reply_text("`Adding Proof...`")
       if not message.from_user.id in (await RANK_USERS()):
-           return await msg.edit("`You Don't Have Enough Rights To Use Me...`")
+           return
       elif len(message.command) <2:
            return await msg.edit("`Use A Correct Format For Adding The Proof...`")
       elif not reply or not reply.media:  
