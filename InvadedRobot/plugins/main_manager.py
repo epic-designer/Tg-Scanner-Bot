@@ -70,10 +70,14 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove:{user_id}:{tro
             if (await is_scan_user(user_id)) == True:
                   await update_scan_reason(user_id,reason)
                   await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(message.from_user.id,mention,reason,date))
+                  await inv.send_message(config.INV_CORE_1, f"/gban {mention} {reason} // By {message.from_user.id} | {date}")
+                  await inv.send_message(config.INV_CORE_1, f"/fban {mention} {reason} // By {message.from_user.id} | {date}")
                   await msg.edit("`The Following User Was Already Scanned`\n`So I Have Just Updated The New Details!`")
             else:
                   await add_scan_user(user_id,reason,date)
                   await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(message.from_user.id,mention,reason,date))
+                  await inv.send_message(config.INV_CORE_1, f"/gban {mention} {reason} // By {message.from_user.id} | {date}")
+                  await inv.send_message(config.INV_CORE_1, f"/fban {mention} {reason} // By {message.from_user.id} | {date}")
                   await msg.edit("`The Following User Was Successfully Scanned!`")
          except Exception as e:
              await msg.delete()
@@ -87,10 +91,14 @@ InlineKeyboardButton("Disapprove Scan",callback_data=f"disapprove:{user_id}:{tro
                if (await is_scan_user(user_id)) == True:
                   await update_scan_reason(user_id,reason)
                   await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(message.from_user.id,mention,reason,date))
+                  await inv.send_message(config.INV_CORE_1, f"/gban {mention} {reason} // By {message.from_user.id} | {date}")
+                  await inv.send_message(config.INV_CORE_1, f"/fban {mention} {reason} // By {message.from_user.id} | {date}")
                   await msg.edit("`The Following User Was Already Scanned`\n`So I Have Just Updated The New Details!`")
                else:
                   await add_scan_user(user_id,reason,date)
                   await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_TEXT.format(message.from_user.id,mention,reason,date))
+                  await inv.send_message(config.INV_CORE_1, f"/gban {mention} {reason} // By {message.from_user.id} | {date}")
+                  await inv.send_message(config.INV_CORE_1, f"/fban {mention} {reason} // By {message.from_user.id} | {date}")
                   await msg.edit("`The Following User Was Successfully Scanned!`")
             except Exception as e:
                   await msg.delete()
@@ -115,6 +123,8 @@ async def approve_scan(_, query):
            await add_scan_user(scan_user_id, reason, date)
            await query.message.edit(f"`The Scan Was Successfully Approved But You Need To Add Proof Manually Here Is The Proof Link:``{proof}`")
            await bot.send_message(config.LOG_CHANNEL_ID, text=strings.SCAN_APPROVED.format(troop_user_mention,scan_user_mention,approved_user_mention,reason,date))
+           await inv.send_message(config.INV_CORE_1, f"/gban {mention} {reason} // By {message.from_user.id} | {date}")
+           await inv.send_message(config.INV_CORE_1, f"/fban {mention} {reason} // By {message.from_user.id} | {date}")
            await req_msg.edit("`Your Request Is Successfully Approved By Commander`")
      except Exception as e:
           await query.message.reply_photo(media.ERROR_IMG,caption=str(e))
@@ -150,7 +160,8 @@ async def revert(_, message):
               else:
                   await remove_scan_user(user_id)
                   await msg.edit("`Successfully Reverted A Scan Of The User...`") 
-                  #bot.send()
+                  await inv.send_message(config.INV_CORE_1, f"/ungban {mention} {reason} // By {message.from_user.id} | {date}")
+                  await inv.send_message(config.INV_CORE_1, f"/unfban {mention} {reason} // By {message.from_user.id} | {date}")
            except Exception as e:
                 await msg.delete()
                 await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
@@ -162,7 +173,8 @@ async def revert(_, message):
                  else:
                       await remove_scan_user(user_id)
                       await msg.edit("`Successfully Reverted A Scan Of The User...`") 
-                      #bot.send()
+                      await inv.send_message(config.INV_CORE_1, f"/ungban {mention} {reason} // By {message.from_user.id} | {date}")
+                      await inv.send_message(config.INV_CORE_1, f"/unfban {mention} {reason} // By {message.from_user.id} | {date}")
              except Exception as e:
                 await msg.delete()
                 await message.reply_photo("https://telegra.ph/file/f21e5445b3d0897f63f3d.jpg", caption=f"`{e}`")
