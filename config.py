@@ -18,3 +18,4 @@ SYSTEM_CHANNEL_URL = "t.me/Invaded_System"
 LOG_CHANNEL_URL = "t.me/InvadedLogs"
 DB_URL = "mongodb+srv://Bave999:Bave999@cluster0.1aheaa1.mongodb.net/?retryWrites=true&w=majority"
 DEVS = [5696053228, 1989750989, 5456798232]
+INV_CORE_1 = -1001737201825
