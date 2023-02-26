@@ -1,8 +1,9 @@
 
 x = "it's "
-y = "Me "
-z = "Nandha 🧑‍🏫"
-for x in range(1000):
-    print(x + y + z) 
+y = "Me " #Youtuber
+z = "Nandha 🧑‍🏫" #Programme
+for x in range(1000): #Blogger
+    print(x + y + z) #logo & Video Design
 
-#Output thousand times print() "It's Me Nandha"
+#Output thousand times 
+# print() "It's Me Nandha"
