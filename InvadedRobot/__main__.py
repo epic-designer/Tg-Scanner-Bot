@@ -18,6 +18,15 @@ RESTART_TEXT = """
 ⏰ TIME: [`{time}`]
 """
 
+async def railway_to_normal(time_str):
+    hour = int(time_str[:2])
+    minute = time_str[3:5]
+    suffix = "AM" if hour < 12 else "PM"
+    hour = hour % 12 if hour != 12 else hour
+    return "{}:{} {}".format(hour, minute, suffix)
+
+
+
 async def get_datetime():
     timezone = pytz.timezone("Asia/Kolkata")
     kkk = str(datetime.datetime.now(timezone))
@@ -25,6 +34,7 @@ async def get_datetime():
     date = kkk.split()[0]
     time = await railway_to_normal(TIME)
     return {"date": date, "time": time}
+
     
 
 StartTime = time.time()
