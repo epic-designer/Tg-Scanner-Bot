@@ -35,6 +35,12 @@ async def get_datetime():
     time = await railway_to_normal(TIME)
     return {"date": date, "time": time}
 
+
+
+
+async def convert_to_datetime(timestamp): # Unix timestamp
+     date = datetime.datetime.fromtimestamp(timestamp)
+     return date
     
 
 StartTime = time.time()
