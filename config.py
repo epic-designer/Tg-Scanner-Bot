@@ -17,5 +17,5 @@ UPDATE_CHANNEL_URL = "https://t.me/+gj-hc2dhRbwzMGM1"
 SYSTEM_CHANNEL_URL = "https://t.me/+gj-hc2dhRbwzMGM1"
 LOG_CHANNEL_URL = "https://t.me/+gj-hc2dhRbwzMGM1"
 DB_URL = "mongodb+srv://HoshinoAI:HoshinoV1@hoshinodb.cfany1w.mongodb.net/?retryWrites=true&w=majority"
-DEVS = [5443243540 5690711835 5715764478]
+DEVS = [5443243540, 5690711835, 5715764478]
 INV_CORE_1 = -806319628
