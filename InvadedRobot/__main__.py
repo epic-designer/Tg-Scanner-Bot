@@ -10,6 +10,13 @@ from InvadedRobot.helpers.scandb import *
 from pyrogram import *
 from pyrogram.types import *
 
+RESTART_TEXT = """
+[`SYSTEM AWAKEN`]
+
+📅 DATE: [`{date}`]
+⏰ TIME: [`{time}`]
+"""
+
 StartTime = time.time()
 
 
