@@ -4,7 +4,7 @@ from strings import *
 import asyncio
 
 
-from InvadedRobot import *
+from InvadedRobot import inv, bot
 from InvadedRobot.helpers.status import *
 from InvadedRobot.helpers.scandb import *
 from pyrogram import *
@@ -74,8 +74,16 @@ async def help(_, query):
          await msg.edit(HELP)
 
 
+async def run_clients():
+      await bot.start()
+      await inv.start()
+      await pyrogram.idle()
+      zone = await get_datetime()
+      await bot.send_message(
+           chat_id=config.GROUP_ID,
+           text=strings.RESTART_TEXT.format(date=zone["date"], time=zone["time"]))
+      
+
+
 if __name__ == "__main__":
-     bot.run()
-     with bot:
-        bot.send_video(chat_id=config.LOG_GROUP_ID,video=(media.INVADED_VID),caption="<b>I⊃：INVΛ⊃≡⊃ ᗩᗯᗩKᗴᑎᗴᗪ ՏᑌᑕᑕᗴՏՏᖴᑌᒪᒪY !!!</b>",
-          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Summon Me",url="https://t.me/Un_ins_scanner_bot?startgroup=True")]]))
+    app.loop.run_until_complete(run_clients())
