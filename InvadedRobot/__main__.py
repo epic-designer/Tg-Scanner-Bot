@@ -2,6 +2,7 @@ import config
 import media
 from strings import *
 import asyncio
+import datetime
 
 
 from InvadedRobot import inv, bot
@@ -16,6 +17,15 @@ RESTART_TEXT = """
 📅 DATE: [`{date}`]
 ⏰ TIME: [`{time}`]
 """
+
+async def get_datetime():
+    timezone = pytz.timezone("Asia/Kolkata")
+    kkk = str(datetime.datetime.now(timezone))
+    TIME = kkk.split()[1]
+    date = kkk.split()[0]
+    time = await railway_to_normal(TIME)
+    return {"date": date, "time": time}
+    
 
 StartTime = time.time()
 
