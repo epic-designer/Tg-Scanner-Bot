@@ -141,4 +141,4 @@ async def run_clients():
 
 
 if __name__ == "__main__":
-    app.loop.run_until_complete(run_clients())
+    inv.loop.run_until_complete(run_clients())
