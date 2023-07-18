@@ -78,4 +78,4 @@ if __name__ == "__main__":
      bot.run()
      with bot:
         bot.send_video(chat_id=config.LOG_GROUP_ID,video=(media.INVADED_VID),caption="<b>I⊃：INVΛ⊃≡⊃ ᗩᗯᗩKᗴᑎᗴᗪ ՏᑌᑕᑕᗴՏՏᖴᑌᒪᒪY !!!</b>",
-          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Summon Me",url="https://t.me/InvadedRobot?startgroup=True")]]))
+          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Summon Me",url="https://t.me/Un_ins_scanner_bot?startgroup=True")]]))
