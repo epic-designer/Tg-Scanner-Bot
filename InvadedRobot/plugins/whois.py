@@ -3,6 +3,7 @@ import strings
 import media
 
 from pyrogram import *
+from pyrogram import filters
 from pyrogram.types import *
 from InvadedRobot import *
 from InvadedRobot.helpers.status import *

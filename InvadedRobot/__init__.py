@@ -4,6 +4,7 @@ import logging
 
 from motor.motor_asyncio import *
 from pyrogram import *
+from pyrogram import Client
 from pymongo import *
 
 logging.basicConfig(
@@ -26,7 +27,7 @@ mongodb = mongo.bot
 
 class INFO:
    def inv():
-      info = app.get_me()
+      info = inv.get_me()
       return info   
      
    def bot():
