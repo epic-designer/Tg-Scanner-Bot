@@ -3,7 +3,7 @@ import strings
 
 from pyrogram import filters
 from pyrogram.types import *
-from pyrogram.types import InlineQueryResultArticle,InputTextMessageContent
+
 
 from InvadedRobot import bot
 

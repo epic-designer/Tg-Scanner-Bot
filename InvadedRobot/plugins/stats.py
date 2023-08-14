@@ -10,7 +10,7 @@ from InvadedRobot.helpers.status import status
 from InvadedRobot import bot
 
 
-from pyrogram import filters
+from pyrogram import *
 
 @bot.on_message(filters.command("stats",config.COMMANDS))
 async def stats(_, message):
