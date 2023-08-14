@@ -1,0 +1,26 @@
+
+{
+    "name": "Xjudgement",
+    "description": "The Telegram to maaintain peace and non-toxicity over the telegram",
+    "repository": "https://github.com/epic-designer/Tg-Scanner-Bot",
+    "logo": "https://te.legra.ph/file/b0e09aabe796209f01d3d.jpg",
+    "keywords": [
+    "python3",
+    "telegram",
+    "bot",
+    "judgemet-bot",
+    "telegram-bot",
+    "management",
+    "ptb",
+    "pyrogram"
+    ],
+   "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    } 
+   ],
+   "stack": "heroku-22"  
+}
